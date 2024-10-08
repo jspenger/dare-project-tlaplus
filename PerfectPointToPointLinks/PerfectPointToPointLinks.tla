@@ -259,10 +259,8 @@ THEOREM THM_PL_Reliable_Delivery ==
     PL_Spec => \A p \in Procs, q \in Procs, m \in Messages : 
             LET rm == [sdr |-> p, rcv |-> q, msg |-> m]
             IN
-                rm \in pl_sent => <>(rm \in pl_delivered)
+                rm \in pl_sent => <>( rm \in pl_delivered )
 PROOF
-\* We start the proof by introducing the assumptions
-\* and some useful definitions
 <1>1 SUFFICES ASSUME PL_Spec PROVE \A p \in Procs, q \in Procs, m \in Messages : 
     LET rm == [sdr |-> p, rcv |-> q, msg |-> m]
     IN
@@ -274,93 +272,62 @@ PROOF
 <1>4 \A A : [](A \/ ~A)
     PROOF OBVIOUS
 
-\* It is always the case that pl_deliver either it is enabled or not enabled
 <1>5 [](enabled_pl_deliver(p, q, m) \/ ~enabled_pl_deliver(p, q, m))
     PROOF BY <1>4, PTL
  
-\* Thus, we can trivially also show this using <1>5
 <1>6 rm \in pl_sent => [](enabled_pl_deliver(p, q, m) \/ ~enabled_pl_deliver(p, q, m))
     PROOF BY <1>5
 
 \* By the weak fairness condition in PL_Spec, it cannot 
 \* be the case that enabled_pl_deliver remains forever enabled 
-<1>55 rm \in pl_sent => ~[]enabled_pl_deliver(p, q, m)
+<1>7 rm \in pl_sent => ~[]enabled_pl_deliver(p, q, m)
     PROOF OMITTED
 
-\* This is a standard temporal tautology
-<1>66 ASSUME NEW A PROVE
-     /\ [](A \/ ~A) 
-     /\ ~[]A
-     => <>~A
-    PROOF OMITTED
+<1>8 \A A : ~[]A => <>(~A)
+    PROOF OBVIOUS
 
-\* We can show the following by first combinging <1>4 and <1>5, 
-\* followed by applying the temporal tautology <1>6
-<1>7 rm \in pl_sent => <>~enabled_pl_deliver(p, q, m)
+<1>9 rm \in pl_sent => <>~enabled_pl_deliver(p, q, m)
+    PROOF BY <1>6, <1>7, <1>8, PTL
 
-\* By inspecting enaled_pl_deliver, we can show the following
-<1>8 /\ ~enabled_pl_deliver(p, q, m) 
+<1>10 /\ ~enabled_pl_deliver(p, q, m) 
      /\ p \in Procs 
      /\ q \in Procs 
      /\ rm \in pl_sent =>
           rm \in pl_delivered
+    PROOF BY DEF enabled_pl_deliver
 
-\* Step <1>8 can be simplified, as we have that p and q are already
-\* assumed to be Procs. Thus the following will hold.
-<1>9 ~enabled_pl_deliver(p, q, m) /\ rm \in pl_sent => rm \in pl_delivered
-    BY <1>8
+<1>11 (~enabled_pl_deliver(p, q, m) /\ rm \in pl_sent) => rm \in pl_delivered
+    BY <1>10
 
-\* We can show that once rm is sent, it remains sent, this is a stable property
-<1>11 rm \in pl_sent => []( rm \in pl_sent )
-    PROOF OMITTED
+<1>12 rm \in pl_sent => []( rm \in pl_sent )
+    PROOF OMITTED \* Should be easy to prove as a stable property 
 
-<1>T ASSUME NEW A, NEW B PROVE
-    (A => B)
-    =>
-    (<>A => <>B)
-    OMITTED
-
-\* Follows from the temporal tautology that A => B implies <>A => <>B
-<1>10 <>( ~enabled_pl_deliver(p, q, m) /\ rm \in pl_sent ) => <>( rm \in pl_delivered )
-    OMITTED
+<1>13 \A A, B : (A => B) => (<>(A) => <>(B))
+    PROOF OBVIOUS
     
-<1>12 <>( ~enabled_pl_deliver(p, q, m) ) /\ []( rm \in pl_sent ) =>
+<1>14 <>( ~enabled_pl_deliver(p, q, m) /\ rm \in pl_sent ) => <>( rm \in pl_delivered )
+    PROOF OMITTED \* Should be obvious from <1>11 and <1>13
+    
+<1>15 <>( ~enabled_pl_deliver(p, q, m) ) /\ []( rm \in pl_sent ) =>
         <>( ~enabled_pl_deliver(p, q, m) /\ rm \in pl_sent )
     BY PTL
 
-<1>13 (rm \in pl_sent) => (
+<1>16 (rm \in pl_sent) => (
     ([]( rm \in pl_sent )) => 
         (<>( ~enabled_pl_deliver(p, q, m) ) => <>( rm \in pl_delivered ))
     )
-    BY <1>12, <1>10
+    BY <1>15, <1>14
 
-<1>14 (rm \in pl_sent) => <>( rm \in pl_delivered )
-    BY <1>11, <1>7, <1>13
+<1>17 (rm \in pl_sent) => <>( rm \in pl_delivered )
+    BY <1>12, <1>9, <1>16
 
-<1>. QED
-    BY <1>14
+<1>18 QED
+    BY <1>17
 
 
-        
-\*THEOREM AXIOM_ENABLED == ENABLED TRUE
-\*OMITTED
 \*
-\*THEOREM ASSUME NEW A PROVE (A => ENABLED A)
-\*PROOF
-\*<1>1 SUFFICES 
-\*        ASSUME A
-\*        PROVE ENABLED A
-\*    OBVIOUS
-\*<1>2 A = TRUE
-\*    BY <1>1
-\*<1>3 (ENABLED A) = (ENABLED TRUE)
-\*    BY <1>2, PTL
-\*<1>4 SUFFICES ASSUME A = TRUE PROVE ENABLED TRUE
-\*    BY AXIOM_ENABLED, PTL, <1>2 
-\*\*<1>3 ENABLED A
-\*\*    BY AXIOM_ENABLED, <1>2
-\*<1> QED
-
+THEOREM ENABLED TRUE
+PROOF OBVIOUS
 \*THEOREM ASSUME NEW ACTION TRUE PROVE (ENABLED TRUE) BY ExpandENABLED
 
 
