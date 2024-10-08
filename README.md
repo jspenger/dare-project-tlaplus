@@ -11,6 +11,9 @@ Broadcast.
 
 
 
+To trigger TLAPS, use ctrl/command G G
+
+
 Module 2.3: Interface and properties of perfect point-to-point links
 Module:
 Name: PerfectPointToPointLinks, instance pl.
