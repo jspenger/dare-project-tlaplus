@@ -13,3 +13,7 @@
 *.old
 **/*~
 cluster/isabelle/output
+
+# TLAPS
+fingerprints.history
+*.thy
