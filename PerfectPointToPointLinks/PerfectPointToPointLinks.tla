@@ -17,7 +17,7 @@ vars == << pl_sent, pl_delivered >>
 
 ----------------------------------------------------------------------------
 
-\* Perfect point-to-point link
+\* Perfect point-to-point link data types
 PL_Rich_Message == [sdr : Procs, rcv : Procs, msg : Messages]
 PL_Sent == PL_Rich_Message
 PL_Delivered == PL_Rich_Message
@@ -43,28 +43,35 @@ pl_deliver(p, q, m) ==
         /\ pl_delivered' = pl_delivered \union {rm}
         /\ UNCHANGED pl_sent
 
-pl_init ==
-    /\ pl_sent = {}
-    /\ pl_delivered = {}
-
 ----------------------------------------------------------------------------
 
 PL_Init ==
-    /\ pl_init
+    /\ pl_sent = {}
+    /\ pl_delivered = {}
 
 PL_Next ==
     \E p \in Procs, q \in Procs, m \in Messages :
             \/ pl_send(p, q, m) 
             \/ pl_deliver(p, q, m)
 
+\* Besides Init and Next, we also include a weak fairness requirement on the Next step formula,
+\* this will help in checking the liveness properties, as it will force a delivery action
+\* to occur if it is forever enabled.
 PL_Spec == PL_Init /\ [][PL_Next]_vars /\ WF_vars(PL_Next)
 
 ----------------------------------------------------------------------------
+\* Model checking
+\* We check the following properties using the TLA+ model checker
 
+\* A type invariant on the execution for the variables.
 PL_Inv_TypeInv ==
     /\ pl_sent \subseteq PL_Sent
     /\ pl_delivered \subseteq PL_Delivered
 
+\* PL1: Reliable delivery: If a correct process p sends a message m to a correct
+\*      process q, then q eventually delivers m.
+\* Here, we model this property simply by that always eventually the sent and delivered
+\* sets have to contain the same messages (when there are no failures).
 PL_Prop_ReliableDelivery == []<>(pl_sent \subseteq pl_delivered /\ pl_delivered \subseteq pl_sent)
 
 \* PL2: No duplication: No message is delivered by a process more than once.
@@ -73,19 +80,20 @@ PL_Prop_NoDuplication ==
         [sdr |-> p, rcv |-> q, msg |-> m] \in pl_delivered => ~ENABLED pl_deliver(p, q, m)
 
 \* PL3: No creation: If some process q delivers a message m with sender p, then m
-\* was previously sent to q by process p
+\*      was previously sent to q by process p
 PL_Prop_NoCreation == [](pl_delivered \subseteq pl_sent)
-\*PL_Prop_NoCreation == (pl_delivered \subseteq pl_sent)
-\* PL_Prop_NoCreation ==
-\*     []\A p \in Procs, q \in Procs, m \in Messages :
-\*         ENABLED pl_deliver(p, q, m) => [sdr |-> p, rcv |-> q, msg |-> m] \in pl_sent
 
 ----------------------------------------------------------------------------
+\* TLAPS Proof System
+\* We also tried to prove these properties using the TLAPS proof system.
+\* The proofs occur in the same order
+
+\* First, we provide a proof for the type invariant.
 
 THEOREM THM_PL_INIT_INV == PL_Init => PL_Inv_TypeInv
 PROOF
 <1>1 PL_Init => PL_Inv_TypeInv
-    BY DEF PL_Init, pl_init, PL_Inv_TypeInv
+    BY DEF PL_Init, PL_Inv_TypeInv
 <1> QED
     BY <1>1
 
@@ -154,107 +162,26 @@ PROOF
 
 ----------------------------------------------------------------------------
 
-THEOREM THM_PL_Prop_NoCreation == PL_Spec => [](pl_delivered \subseteq pl_sent)
-PROOF
-<1>1 PL_Init => pl_delivered \subseteq pl_sent
-    BY DEF PL_Init, pl_init
-<1>2 PL_Next /\ pl_delivered \subseteq pl_sent => (pl_delivered \subseteq pl_sent)'
-    <2>1 SUFFICES
-        ASSUME PL_Next, pl_delivered \subseteq pl_sent
-        PROVE (pl_delivered \subseteq pl_sent)'
-        BY DEF PL_Next
-    <2>2 PICK p \in Procs, q \in Procs, m \in Messages : pl_send(p, q, m) \/ pl_deliver(p, q, m)
-        BY <2>1 DEF PL_Next
-    <2>. QED
-        BY <2>1 DEF PL_Next, pl_send, pl_deliver
-<1>3 pl_delivered \subseteq pl_sent /\ UNCHANGED vars => (pl_delivered \subseteq pl_sent)'
-    BY DEF vars
-<1>4 [PL_Next]_vars /\ pl_delivered \subseteq pl_sent => (pl_delivered \subseteq pl_sent)'
-    BY <1>2, <1>3
-<1>5 QED
-    BY <1>1, <1>4, PTL DEF PL_Spec
-    
-----------------------------------------------------------------------------
+\* PL1: Reliable delivery: If a correct process p sends a message m to a correct
+\*      process q, then q eventually delivers m.
 
+\* To my knowledge there is currently no way to prove things using the
+\* "ENABLED" keyword
+THEOREM ENABLED TRUE
+PROOF OBVIOUS
 
-\*BUGGY ERROR
-\*THEOREM THM_PL_Prop_NoDuplication ==
-\*    PL_Spec => []\A p \in Procs, q \in Procs, m \in Messages :
-\*        [sdr |-> p, rcv |-> q, msg |-> m] \in pl_delivered => ~ENABLED pl_deliver(p, q, m)
-\*PROOF
-\*<1>1 Inv == \A p \in Procs, q \in Procs, m \in Messages : [sdr |-> p, rcv |-> q, msg |-> m] \in pl_delivered => ~ENABLED pl_deliver(p, q, m)
-\*<1>2 USE DEF Inv, PL_Init, pl_init, PL_Next
-\*<1>3 PL_Init => Inv
-\*    OBVIOUS
-\*\* Causes a bug
-\*\*<1>4 PL_Next /\ Inv => Inv'
-\*\*    OBVIOUS
-\*<1>4 PL_Next /\ Inv => Inv'
-\*    BY DEF PL_Next
-\*<1>. QED
+THEOREM \A A : A => ENABLED A
+PROOF OBVIOUS
 
-\*THEOREM THM_PL_Prop_NoDuplication ==
-\*    PL_Spec => []\A p \in Procs, q \in Procs, m \in Messages :
-\*        [sdr |-> p, rcv |-> q, msg |-> m] \in pl_delivered => ~ENABLED pl_deliver(p, q, m)
-\*PROOF
-\*<1>1 Inv == \A p \in Procs, q \in Procs, m \in Messages : [sdr |-> p, rcv |-> q, msg |-> m] \in pl_delivered => ~ENABLED pl_deliver(p, q, m)
-\*<1>2 Invp == (\A p \in Procs, q \in Procs, m \in Messages : [sdr |-> p, rcv |-> q, msg |-> m] \in pl_delivered' => (~ENABLED pl_deliver(p, q, m))')
-\*<1>3 USE DEF Inv, PL_Init, pl_init, PL_Next
-\*<1>4 PL_Init => Inv
-\*    OBVIOUS
-\*\* Causes a bug
-\*\*<1>4 PL_Next /\ Inv => Inv'
-\*\*    OBVIOUS
-\*<1>5 PL_Next /\ Inv => Invp
-\*    BY SMT
-\*<1>. QED
-
-THEOREM AUX_1 == \A p \in Procs, q \in Procs, m \in Messages : 
-        [sdr |-> p, rcv |-> q, msg |-> m] \in pl_delivered 
-        =>
-        ~ENABLED pl_deliver(p, q, m)
-OMITTED
-
-\*THEOREM THM_PL_Prop_NoDuplication ==
-\*    PL_Spec => [](\A p \in Procs, q \in Procs, m \in Messages :
-\*        [sdr |-> p, rcv |-> q, msg |-> m] \in pl_delivered => ~ENABLED pl_deliver(p, q, m))
-\*BY AUX_1, PTL
-
+\* Let's define ENABLED manually instead
 enabled_pl_deliver(p, q, m) == 
     /\ p \in Procs
     /\ q \in Procs
     /\ LET rm == [sdr |-> p, rcv |-> q, msg |-> m]
         IN
         /\ rm \in pl_sent
-        /\ rm \notin pl_delivered
+        /\ rm \notin pl_delivered 
 
-THEOREM THM_PL_Prop_NoDuplication == PL_Spec => [] \A p \in Procs, q \in Procs, m \in Messages :
-        [sdr |-> p, rcv |-> q, msg |-> m] \in pl_delivered => ~enabled_pl_deliver(p, q, m)
-PROOF
-<1>1 \A p \in Procs, q \in Procs, m \in Messages :
-    ~[sdr |-> p, rcv |-> q, msg |-> m] \notin pl_delivered =>
-        ~enabled_pl_deliver(p, q, m)
-    BY DEF enabled_pl_deliver
-<1>2 \A p \in Procs, q \in Procs, m \in Messages :
-        [sdr |-> p, rcv |-> q, msg |-> m] \in pl_delivered =>  ~[sdr |-> p, rcv |-> q, msg |-> m] \notin pl_delivered
-    OBVIOUS
-<1>3 \A p \in Procs, q \in Procs, m \in Messages :
-        [sdr |-> p, rcv |-> q, msg |-> m] \in pl_delivered =>  ~enabled_pl_deliver(p, q, m)
-    BY <1>1, <1>2
-<1>4 []\A p \in Procs, q \in Procs, m \in Messages :
-        [sdr |-> p, rcv |-> q, msg |-> m] \in pl_delivered =>  ~enabled_pl_deliver(p, q, m)
-    BY <1>3, PTL
-<1>5 PL_Spec => []\A p \in Procs, q \in Procs, m \in Messages :
-        [sdr |-> p, rcv |-> q, msg |-> m] \in pl_delivered =>  ~enabled_pl_deliver(p, q, m)
-    BY <1>4
-<1>. QED
-   BY <1>5
-
-
-----------------------------------------------------------------------------
-
-\* PL1: Reliable delivery: If a correct process p sends a message m to a correct
-\*      process q, then q eventually delivers m.
 THEOREM THM_PL_Reliable_Delivery ==
     PL_Spec => \A p \in Procs, q \in Procs, m \in Messages : 
             LET rm == [sdr |-> p, rcv |-> q, msg |-> m]
@@ -324,15 +251,56 @@ PROOF
 <1>18 QED
     BY <1>17
 
+----------------------------------------------------------------------------
 
-\*
-THEOREM ENABLED TRUE
-PROOF OBVIOUS
-\*THEOREM ASSUME NEW ACTION TRUE PROVE (ENABLED TRUE) BY ExpandENABLED
+\* PL2: No duplication: No message is delivered by a process more than once.
 
+THEOREM THM_PL_Prop_NoDuplication == PL_Spec => [] \A p \in Procs, q \in Procs, m \in Messages :
+        [sdr |-> p, rcv |-> q, msg |-> m] \in pl_delivered => ~enabled_pl_deliver(p, q, m)
+PROOF
+<1>1 \A p \in Procs, q \in Procs, m \in Messages :
+    ~[sdr |-> p, rcv |-> q, msg |-> m] \notin pl_delivered =>
+        ~enabled_pl_deliver(p, q, m)
+    BY DEF enabled_pl_deliver
+<1>2 \A p \in Procs, q \in Procs, m \in Messages :
+        [sdr |-> p, rcv |-> q, msg |-> m] \in pl_delivered =>  ~[sdr |-> p, rcv |-> q, msg |-> m] \notin pl_delivered
+    OBVIOUS
+<1>3 \A p \in Procs, q \in Procs, m \in Messages :
+        [sdr |-> p, rcv |-> q, msg |-> m] \in pl_delivered =>  ~enabled_pl_deliver(p, q, m)
+    BY <1>1, <1>2
+<1>4 []\A p \in Procs, q \in Procs, m \in Messages :
+        [sdr |-> p, rcv |-> q, msg |-> m] \in pl_delivered =>  ~enabled_pl_deliver(p, q, m)
+    BY <1>3, PTL
+<1>5 PL_Spec => []\A p \in Procs, q \in Procs, m \in Messages :
+        [sdr |-> p, rcv |-> q, msg |-> m] \in pl_delivered =>  ~enabled_pl_deliver(p, q, m)
+    BY <1>4
+<1>. QED
+   BY <1>5
+   
+----------------------------------------------------------------------------
 
+\*PL3: No creation: If some process q delivers a message m with sender p, then m
+\*     was previously sent to q by process p.
 
-
+THEOREM THM_PL_Prop_NoCreation == PL_Spec => [](pl_delivered \subseteq pl_sent)
+PROOF
+<1>1 PL_Init => pl_delivered \subseteq pl_sent
+    BY DEF PL_Init
+<1>2 PL_Next /\ pl_delivered \subseteq pl_sent => (pl_delivered \subseteq pl_sent)'
+    <2>1 SUFFICES
+        ASSUME PL_Next, pl_delivered \subseteq pl_sent
+        PROVE (pl_delivered \subseteq pl_sent)'
+        BY DEF PL_Next
+    <2>2 PICK p \in Procs, q \in Procs, m \in Messages : pl_send(p, q, m) \/ pl_deliver(p, q, m)
+        BY <2>1 DEF PL_Next
+    <2>. QED
+        BY <2>1 DEF PL_Next, pl_send, pl_deliver
+<1>3 pl_delivered \subseteq pl_sent /\ UNCHANGED vars => (pl_delivered \subseteq pl_sent)'
+    BY DEF vars
+<1>4 [PL_Next]_vars /\ pl_delivered \subseteq pl_sent => (pl_delivered \subseteq pl_sent)'
+    BY <1>2, <1>3
+<1>5 QED
+    BY <1>1, <1>4, PTL DEF PL_Spec
+    
 =============================================================================
-
 
