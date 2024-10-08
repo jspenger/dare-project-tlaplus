@@ -1,50 +1,25 @@
-Model checking options:
-- -generate -depth N
-  - randomly run the model checker to depth N
+# DARE TLAPlus Project
 
+## How to run
+The best way to use these files is via the TLA+ Toolbox, as I have not found a way to reliably run this from the command line or from VS Code.
 
-Termination / deadlock discussion
-https://groups.google.com/g/tlaplus/c/-vy59p38qTk
+To trigger TLAPS, the TLA+ Proof System, use the keyboard command `COMMAND-G-G`.
+Using TLAPS may require some further installations.
 
+The models should be available once loaded.
 
-Broadcast.
+## Project scope
 
+The project consists of three parts.
 
+First, we have a TLA+ specification for Perfect Point-to-Point Links. 
+This is a simple communication abstraction, for seding and receiving messages between processes.
+It consists of the following.
+* The specification can be found in `PerfectPointToPointLinks.tla`.
+* A TLA+ spec of Module 2.3: Interface and properties of perfect point-to-point [1]
+* Definitions of the properties of the module
+* A model which checks the properties for 2 processes which each send 2 messages to each other (including themselves), i.e. 4 messages in total
+* TLAPS proofs for the properties. The proofs are almost complete, there are still some small things which need to be proven
 
-To trigger TLAPS, use ctrl/command G G
-
-
-Module 2.3: Interface and properties of perfect point-to-point links
-Module:
-Name: PerfectPointToPointLinks, instance pl.
-Events:
-Request: 〈 pl,
-Send | q, m 〉: Requests to send message m to process q.
-Indication: 〈 pl,
-Deliver | p, m 〉: Delivers message m sent by process p.
-Properties:
-PL1: Reliable delivery: If a correct process p sends a message m to a correct
-process q, then q eventually delivers m.
-PL2: No duplication: No message is delivered by a process more than once.
-PL3: No creation: If some process q delivers a message m with sender p, then m
-was previously sent to q by process p.
-
-
-Algorithm 2.2: Eliminate Duplicates
-Implements:
-PerfectPointToPointLinks, instance pl.
-Uses:
-StubbornPointToPointLinks, instance sl.
-upon event 〈 pl,
-Init 〉 do
-delivered := ∅;
-upon event 〈 pl,
-Send | q, m 〉 do
-trigger 〈 sl,
-Send | q, m 〉;
-upon event 〈 sl,
-Deliver | p, m 〉 do
-if m  ∈ delivered then
-delivered := delivered ∪ {m};
-trigger 〈 pl,
-Deliver | p, m 〉
+## References
+> [1] Cachin, Christian, Rachid Guerraoui, and Luís Rodrigues. Introduction to reliable and secure distributed programming. Springer Science & Business Media, 2011.
