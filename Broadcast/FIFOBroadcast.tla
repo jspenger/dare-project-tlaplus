@@ -108,7 +108,6 @@ beb_deliver(p, q, m, id) ==
     /\ LET bc_msg == [sdr |-> q, msg |-> m, id |-> id]
             IN
             /\ pl_deliver(q, p, bc_msg)
-            \* /\ bc_state' = bc_state
             /\ bc_state' = [bc_state EXCEPT ![p].delivered = bc_state[p].delivered \union {bc_msg}]
     /\ bc_delivered' = bc_delivered (+) SetToBag({ [sdr |-> q, rcv |-> p, msg |-> m] })
     /\ UNCHANGED << bc_sent, bc_failed, bc_messages_used >>

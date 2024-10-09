@@ -43,3 +43,12 @@ Finished checking temporal properties in 00s at 2024-10-09 19:35:27
 @!@!@STARTMSG 2200:0 @!@!@
 Progress(6) at 2024-10-09 19:35:27: 140 779 states generated (140 779 s/min), 7 127 distinct states found (7 127 ds/min), 5 800 states left on queue.
 @!@!@ENDMSG 2200 @!@!@
+@!@!@STARTMSG 2192:0 @!@!@
+Checking temporal properties for the current state space with 122519 total distinct states at (2024-10-09 19:36:27)
+@!@!@ENDMSG 2192 @!@!@
+@!@!@STARTMSG 2267:0 @!@!@
+Finished checking temporal properties in 03s at 2024-10-09 19:36:30
+@!@!@ENDMSG 2267 @!@!@
+@!@!@STARTMSG 2200:0 @!@!@
+Progress(8) at 2024-10-09 19:36:30: 2 718 814 states generated (2 578 035 s/min), 122 520 distinct states found (115 393 ds/min), 85 053 states left on queue.
+@!@!@ENDMSG 2200 @!@!@
