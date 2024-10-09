@@ -2,7 +2,8 @@
 
 EXTENDS 
     Naturals,
-    FiniteSets
+    FiniteSets,
+    Bags
 
 CONSTANTS
     Procs,
@@ -89,7 +90,7 @@ beb_broadcast(p, m) ==
         LET bc_msg == [sdr |-> p, msg |-> m]
             IN
             pl_bcast_send(p, qs, bc_msg)
-    /\ bc_sent' = bc_sent \union { [sdr |-> p, rcv |-> q, msg |-> m] : q \in Procs }
+    /\ bc_sent' = bc_sent (+) SetToBag({[sdr |-> p, rcv |-> q, msg |-> m] : q \in Procs})
     /\ UNCHANGED bc_delivered
 
 \* deliver a broadcast message m to process p from process q
@@ -98,12 +99,12 @@ beb_deliver(p, q, m) ==
     /\ LET bc_msg == [sdr |-> q, msg |-> m]
             IN
             pl_deliver(q, p, bc_msg)
-    /\ bc_delivered' = bc_delivered \union { [sdr |-> q, rcv |-> p, msg |-> m] }
+    /\ bc_delivered' = bc_delivered (+) SetToBag({ [sdr |-> q, rcv |-> p, msg |-> m] })
     /\ UNCHANGED bc_sent
 
 BEB_Init ==
-    /\ bc_sent = {}
-    /\ bc_delivered = {}
+    /\ bc_sent = EmptyBag
+    /\ bc_delivered = EmptyBag
 
 Init == 
     /\ PL_Init
@@ -131,14 +132,11 @@ TypeInv ==
 Prop_BEB1_Validity ==
     []\A p \in Procs, q \in Procs, m \in Messages : 
         (p \in Correct /\ q \in Correct) => 
-            (([sdr |-> p, rcv |-> q, msg |-> m] \in bc_sent) => 
-                (<>([sdr |-> p, rcv |-> q, msg |-> m] \in bc_delivered)))
-
-    \* []\A p \in Procs, q \in Procs : p \in Correct /\ q \in Correct => 
-    \*     \A m \in Messages :
-    \*         beb_broadcast(p, m) => <><<beb_deliver(q, p, m)>>_vars
+            (([sdr |-> p, rcv |-> q, msg |-> m] \in DOMAIN bc_sent) => 
+                (<>([sdr |-> p, rcv |-> q, msg |-> m] \in DOMAIN bc_delivered)))
 
 \* BEB2: No duplication: No message is delivered more than once.
+Prop_BEB2_NoDuplication == []\A m \in BagToSet(bc_delivered) : (CopiesIn(m, bc_delivered) <= 1)
 
 \* BEB3: No creation: If a process delivers a message m with sender s, then m was
 \* previously broadcast by process s.
