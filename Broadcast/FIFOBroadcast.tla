@@ -16,7 +16,7 @@ ASSUME
     /\ Messages # {}
     /\ Correct \in SUBSET Procs
 
-BC_Message == [sdr : Procs, msg : Messages]
+BC_Message == [sdr : Procs, msg : Messages, id: Nat]
 
 ----------------------------------------------------------------------------
 
@@ -77,21 +77,17 @@ VARIABLES
     bc_sent,
     bc_delivered,
     bc_failed,
-    bc_messages_used
+    bc_messages_used,
+    bc_state
 
 bc_vars == << bc_sent, bc_delivered, bc_failed, bc_messages_used, bc_state >>
 
 vars == << pl_vars, bc_vars >>
 
-\* bc state is a partial function from processor id to 
-\* its state, consisting of
-\* - it's lsn sequence number
-\* - set of messags it has received
-\* - set of messages it has delivered
-BC_State = []
+BC_ProcState == [lsn : Nat, delivered : SUBSET BC_Message]
+BC_State == [p \in Procs |-> BC_ProcState]
 
 ----------------------------------------------------------------------------
-
 
 \* broadcast message m from process p
 beb_broadcast(p, m) ==
@@ -99,39 +95,44 @@ beb_broadcast(p, m) ==
     /\ bc_messages_used' = bc_messages_used \union {m} 
     /\ p \notin bc_failed
     /\ LET qs == Procs IN
-        LET bc_msg == [sdr |-> p, msg |-> m]
+        LET bc_msg == [sdr |-> p, msg |-> m, id |-> bc_state[p].lsn]
             IN
-            pl_bcast_send(p, qs, bc_msg)
+            /\ pl_bcast_send(p, qs, bc_msg)
+            /\ bc_state' = [bc_state EXCEPT ![p].lsn = bc_state[p].lsn + 1]
     /\ bc_sent' = bc_sent (+) SetToBag({[sdr |-> p, rcv |-> q, msg |-> m] : q \in Procs})
     /\ UNCHANGED << bc_delivered, bc_failed >>
 
 \* deliver a broadcast message m to process p from process q
-beb_deliver(p, q, m) == 
+beb_deliver(p, q, m, id) == 
     /\ p \notin bc_failed
-    /\ LET bc_msg == [sdr |-> q, msg |-> m]
+    /\ LET bc_msg == [sdr |-> q, msg |-> m, id |-> id]
             IN
-            pl_deliver(q, p, bc_msg)
+            /\ pl_deliver(q, p, bc_msg)
+            \* /\ bc_state' = bc_state
+            /\ bc_state' = [bc_state EXCEPT ![p].delivered = bc_state[p].delivered \union {bc_msg}]
     /\ bc_delivered' = bc_delivered (+) SetToBag({ [sdr |-> q, rcv |-> p, msg |-> m] })
     /\ UNCHANGED << bc_sent, bc_failed, bc_messages_used >>
 
 beb_fail(p) ==
     /\ p \notin Correct
+    /\ p \notin bc_failed
     /\ bc_failed' = bc_failed \union {p}
-    /\ UNCHANGED << pl_vars, bc_sent, bc_delivered, bc_messages_used >>
+    /\ UNCHANGED << pl_vars, bc_sent, bc_delivered, bc_messages_used, bc_state >>
 
 BEB_Init ==
     /\ bc_sent = EmptyBag
     /\ bc_delivered = EmptyBag
     /\ bc_failed = {}
     /\ bc_messages_used = {}
+    /\ bc_state = [p \in Procs |-> [lsn |-> 0, delivered |-> {}]]
 
 Init == 
     /\ PL_Init
     /\ BEB_Init
 
-Next == \E p \in Procs, q \in Procs, m \in Messages :
+Next == \E p \in Procs, q \in Procs, m \in Messages, id \in 0..(Cardinality(Messages) - 1) :
     \/ beb_broadcast(p, m)
-    \/ beb_deliver(p, q, m)
+    \/ beb_deliver(p, q, m, id)
     \/ beb_fail(p)
 
 Spec ==
@@ -161,6 +162,15 @@ Prop_BEB2_NoDuplication == []\A m \in BagToSet(bc_delivered) : (CopiesIn(m, bc_d
 \* BEB3: No creation: If a process delivers a message m with sender s, then m was
 \* previously broadcast by process s.
 Prop_BEB3_NoCreation == [](BagToSet(bc_delivered) \subseteq BagToSet(bc_sent))
+
+\* FIFO delivery: If some process broadcasts message m1 before it broadcasts
+\* message m2, then no correct process delivers m2 unless it has already delivered 
+\* m1.
+PROP_FIFODelivery == 
+    []\A p \in Procs : \A m \in bc_state[p].delivered :
+        \/ m.id = 0 
+        \/ \E mp \in bc_state[p].delivered : 
+            mp.sdr = m.sdr /\ (mp.id + 1 = m.id) => (mp \in bc_state[p].delivered)
 
 =============================================================================
 \* Modification History

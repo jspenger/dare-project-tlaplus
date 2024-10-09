@@ -1,0 +1,45 @@
+@!@!@STARTMSG 2262:0 @!@!@
+TLC2 Version 2.20 of Day Month 20?? (rev: 9fc0166)
+@!@!@ENDMSG 2262 @!@!@
+@!@!@STARTMSG 2187:0 @!@!@
+Running breadth-first search Model-Checking with fp 39 and seed -7795196005113775217 with 1 worker on 10 cores with 3641MB heap and 64MB offheap memory [pid: 9234] (Mac OS X 14.6.1 aarch64, Amazon.com Inc. 11.0.21 x86_64, MSBDiskFPSet, DiskStateQueue).
+@!@!@ENDMSG 2187 @!@!@
+@!@!@STARTMSG 2220:0 @!@!@
+Starting SANY...
+@!@!@ENDMSG 2220 @!@!@
+Parsing file /Users/jonasspenger/work/dare-project-tlaplus/Broadcast/FIFOBroadcast.tla
+Parsing file /private/var/folders/tk/4dct8fcx1nqbzrrnljm9_8c80000gn/T/tlc-4450525312516281726/Naturals.tla (jar:file:/Users/jonasspenger/.vscode/extensions/tlaplus.vscode-ide-2024.10.81803/tools/tla2tools.jar!/tla2sany/StandardModules/Naturals.tla)
+Parsing file /private/var/folders/tk/4dct8fcx1nqbzrrnljm9_8c80000gn/T/tlc-4450525312516281726/FiniteSets.tla (jar:file:/Users/jonasspenger/.vscode/extensions/tlaplus.vscode-ide-2024.10.81803/tools/tla2tools.jar!/tla2sany/StandardModules/FiniteSets.tla)
+Parsing file /private/var/folders/tk/4dct8fcx1nqbzrrnljm9_8c80000gn/T/tlc-4450525312516281726/Bags.tla (jar:file:/Users/jonasspenger/.vscode/extensions/tlaplus.vscode-ide-2024.10.81803/tools/tla2tools.jar!/tla2sany/StandardModules/Bags.tla)
+Parsing file /private/var/folders/tk/4dct8fcx1nqbzrrnljm9_8c80000gn/T/tlc-4450525312516281726/TLC.tla (jar:file:/Users/jonasspenger/.vscode/extensions/tlaplus.vscode-ide-2024.10.81803/tools/tla2tools.jar!/tla2sany/StandardModules/TLC.tla)
+Parsing file /private/var/folders/tk/4dct8fcx1nqbzrrnljm9_8c80000gn/T/tlc-4450525312516281726/Sequences.tla (jar:file:/Users/jonasspenger/.vscode/extensions/tlaplus.vscode-ide-2024.10.81803/tools/tla2tools.jar!/tla2sany/StandardModules/Sequences.tla)
+Semantic processing of module Naturals
+Semantic processing of module Sequences
+Semantic processing of module FiniteSets
+Semantic processing of module TLC
+Semantic processing of module Bags
+Semantic processing of module FIFOBroadcast
+@!@!@STARTMSG 2219:0 @!@!@
+SANY finished.
+@!@!@ENDMSG 2219 @!@!@
+@!@!@STARTMSG 2185:0 @!@!@
+Starting... (2024-10-09 19:35:23)
+@!@!@ENDMSG 2185 @!@!@
+@!@!@STARTMSG 2212:0 @!@!@
+Implied-temporal checking--satisfiability problem has 1 branches.
+@!@!@ENDMSG 2212 @!@!@
+@!@!@STARTMSG 2189:0 @!@!@
+Computing initial states...
+@!@!@ENDMSG 2189 @!@!@
+@!@!@STARTMSG 2190:0 @!@!@
+Finished computing initial states: 1 distinct state generated at 2024-10-09 19:35:24.
+@!@!@ENDMSG 2190 @!@!@
+@!@!@STARTMSG 2192:0 @!@!@
+Checking temporal properties for the current state space with 7127 total distinct states at (2024-10-09 19:35:27)
+@!@!@ENDMSG 2192 @!@!@
+@!@!@STARTMSG 2267:0 @!@!@
+Finished checking temporal properties in 00s at 2024-10-09 19:35:27
+@!@!@ENDMSG 2267 @!@!@
+@!@!@STARTMSG 2200:0 @!@!@
+Progress(6) at 2024-10-09 19:35:27: 140 779 states generated (140 779 s/min), 7 127 distinct states found (7 127 ds/min), 5 800 states left on queue.
+@!@!@ENDMSG 2200 @!@!@
