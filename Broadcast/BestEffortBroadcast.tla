@@ -75,9 +75,10 @@ PL_Init ==
 
 VARIABLES
     bc_sent,
-    bc_delivered
+    bc_delivered,
+    bc_failed
 
-bc_vars == << bc_sent, bc_delivered >>
+bc_vars == << bc_sent, bc_delivered, bc_failed >>
 
 vars == << pl_vars, bc_vars >>
 
@@ -85,26 +86,32 @@ vars == << pl_vars, bc_vars >>
 
 \* broadcast message m from process p
 beb_broadcast(p, m) ==
-    /\ p \in Correct
+    /\ p \notin bc_failed
     /\ LET qs == Procs IN
         LET bc_msg == [sdr |-> p, msg |-> m]
             IN
             pl_bcast_send(p, qs, bc_msg)
     /\ bc_sent' = bc_sent (+) SetToBag({[sdr |-> p, rcv |-> q, msg |-> m] : q \in Procs})
-    /\ UNCHANGED bc_delivered
+    /\ UNCHANGED << bc_delivered, bc_failed >>
 
 \* deliver a broadcast message m to process p from process q
 beb_deliver(p, q, m) == 
-    /\ p \in Correct
+    /\ p \notin bc_failed
     /\ LET bc_msg == [sdr |-> q, msg |-> m]
             IN
             pl_deliver(q, p, bc_msg)
     /\ bc_delivered' = bc_delivered (+) SetToBag({ [sdr |-> q, rcv |-> p, msg |-> m] })
-    /\ UNCHANGED bc_sent
+    /\ UNCHANGED << bc_sent, bc_failed >>
+
+beb_fail(p) ==
+    /\ p \notin Correct
+    /\ bc_failed' = bc_failed \union {p}
+    /\ UNCHANGED << pl_vars, bc_sent, bc_delivered >>
 
 BEB_Init ==
     /\ bc_sent = EmptyBag
     /\ bc_delivered = EmptyBag
+    /\ bc_failed = {}
 
 Init == 
     /\ PL_Init
@@ -113,6 +120,7 @@ Init ==
 Next == \E p \in Procs, q \in Procs, m \in Messages : 
     \/ beb_broadcast(p, m)
     \/ beb_deliver(p, q, m)
+    \/ beb_fail(p)
 
 Spec ==
     /\ Init
@@ -140,6 +148,7 @@ Prop_BEB2_NoDuplication == []\A m \in BagToSet(bc_delivered) : (CopiesIn(m, bc_d
 
 \* BEB3: No creation: If a process delivers a message m with sender s, then m was
 \* previously broadcast by process s.
+Prop_BEB3_NoCreation == [](BagToSet(bc_delivered) \subseteq BagToSet(bc_sent))
 
 =============================================================================
 \* Modification History
