@@ -12,6 +12,7 @@ The models should be available once loaded.
 
 The project consists of three parts.
 
+### Perfect Point-to-Point Links
 First, we have a TLA+ specification for Perfect Point-to-Point Links. 
 This is a simple communication abstraction, for seding and receiving messages between processes.
 It consists of the following.
@@ -20,6 +21,9 @@ It consists of the following.
 * Definitions of the properties of the module
 * A model which checks the properties for 2 processes which each send 2 messages to each other (including themselves), i.e. 4 messages in total
 * TLAPS proofs for the properties. The proofs are almost complete, there are still some small things which need to be proven
+
+### Broadcast
+* We limit the total number of messages sent in the system to a number, not to a number per process.
 
 ## References
 > [1] Cachin, Christian, Rachid Guerraoui, and Luís Rodrigues. Introduction to reliable and secure distributed programming. Springer Science & Business Media, 2011.

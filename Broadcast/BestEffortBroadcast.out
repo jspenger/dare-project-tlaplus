@@ -2,17 +2,17 @@
 TLC2 Version 2.20 of Day Month 20?? (rev: 2360829)
 @!@!@ENDMSG 2262 @!@!@
 @!@!@STARTMSG 2187:0 @!@!@
-Running breadth-first search Model-Checking with fp 52 and seed 64895667644597032 with 1 worker on 10 cores with 3641MB heap and 64MB offheap memory [pid: 4491] (Mac OS X 14.6.1 aarch64, Amazon.com Inc. 11.0.21 x86_64, MSBDiskFPSet, DiskStateQueue).
+Running breadth-first search Model-Checking with fp 125 and seed -9021423215864630161 with 1 worker on 10 cores with 3641MB heap and 64MB offheap memory [pid: 5701] (Mac OS X 14.6.1 aarch64, Amazon.com Inc. 11.0.21 x86_64, MSBDiskFPSet, DiskStateQueue).
 @!@!@ENDMSG 2187 @!@!@
 @!@!@STARTMSG 2220:0 @!@!@
 Starting SANY...
 @!@!@ENDMSG 2220 @!@!@
 Parsing file /Users/jonasspenger/work/dare-project-tlaplus/Broadcast/BestEffortBroadcast.tla
-Parsing file /private/var/folders/tk/4dct8fcx1nqbzrrnljm9_8c80000gn/T/tlc-10173613824102226456/Naturals.tla (jar:file:/Users/jonasspenger/.vscode/extensions/tlaplus.vscode-ide-2024.10.72017/tools/tla2tools.jar!/tla2sany/StandardModules/Naturals.tla)
-Parsing file /private/var/folders/tk/4dct8fcx1nqbzrrnljm9_8c80000gn/T/tlc-10173613824102226456/FiniteSets.tla (jar:file:/Users/jonasspenger/.vscode/extensions/tlaplus.vscode-ide-2024.10.72017/tools/tla2tools.jar!/tla2sany/StandardModules/FiniteSets.tla)
-Parsing file /private/var/folders/tk/4dct8fcx1nqbzrrnljm9_8c80000gn/T/tlc-10173613824102226456/Bags.tla (jar:file:/Users/jonasspenger/.vscode/extensions/tlaplus.vscode-ide-2024.10.72017/tools/tla2tools.jar!/tla2sany/StandardModules/Bags.tla)
-Parsing file /private/var/folders/tk/4dct8fcx1nqbzrrnljm9_8c80000gn/T/tlc-10173613824102226456/TLC.tla (jar:file:/Users/jonasspenger/.vscode/extensions/tlaplus.vscode-ide-2024.10.72017/tools/tla2tools.jar!/tla2sany/StandardModules/TLC.tla)
-Parsing file /private/var/folders/tk/4dct8fcx1nqbzrrnljm9_8c80000gn/T/tlc-10173613824102226456/Sequences.tla (jar:file:/Users/jonasspenger/.vscode/extensions/tlaplus.vscode-ide-2024.10.72017/tools/tla2tools.jar!/tla2sany/StandardModules/Sequences.tla)
+Parsing file /private/var/folders/tk/4dct8fcx1nqbzrrnljm9_8c80000gn/T/tlc-571989208241377859/Naturals.tla (jar:file:/Users/jonasspenger/.vscode/extensions/tlaplus.vscode-ide-2024.10.72017/tools/tla2tools.jar!/tla2sany/StandardModules/Naturals.tla)
+Parsing file /private/var/folders/tk/4dct8fcx1nqbzrrnljm9_8c80000gn/T/tlc-571989208241377859/FiniteSets.tla (jar:file:/Users/jonasspenger/.vscode/extensions/tlaplus.vscode-ide-2024.10.72017/tools/tla2tools.jar!/tla2sany/StandardModules/FiniteSets.tla)
+Parsing file /private/var/folders/tk/4dct8fcx1nqbzrrnljm9_8c80000gn/T/tlc-571989208241377859/Bags.tla (jar:file:/Users/jonasspenger/.vscode/extensions/tlaplus.vscode-ide-2024.10.72017/tools/tla2tools.jar!/tla2sany/StandardModules/Bags.tla)
+Parsing file /private/var/folders/tk/4dct8fcx1nqbzrrnljm9_8c80000gn/T/tlc-571989208241377859/TLC.tla (jar:file:/Users/jonasspenger/.vscode/extensions/tlaplus.vscode-ide-2024.10.72017/tools/tla2tools.jar!/tla2sany/StandardModules/TLC.tla)
+Parsing file /private/var/folders/tk/4dct8fcx1nqbzrrnljm9_8c80000gn/T/tlc-571989208241377859/Sequences.tla (jar:file:/Users/jonasspenger/.vscode/extensions/tlaplus.vscode-ide-2024.10.72017/tools/tla2tools.jar!/tla2sany/StandardModules/Sequences.tla)
 Semantic processing of module Naturals
 Semantic processing of module Sequences
 Semantic processing of module FiniteSets
@@ -23,7 +23,7 @@ Semantic processing of module BestEffortBroadcast
 SANY finished.
 @!@!@ENDMSG 2219 @!@!@
 @!@!@STARTMSG 2185:0 @!@!@
-Starting... (2024-10-09 12:21:33)
+Starting... (2024-10-09 13:00:39)
 @!@!@ENDMSG 2185 @!@!@
 @!@!@STARTMSG 2212:0 @!@!@
 Implied-temporal checking--satisfiability problem has 1 branches.
@@ -32,59 +32,45 @@ Implied-temporal checking--satisfiability problem has 1 branches.
 Computing initial states...
 @!@!@ENDMSG 2189 @!@!@
 @!@!@STARTMSG 2190:0 @!@!@
-Finished computing initial states: 1 distinct state generated at 2024-10-09 12:21:33.
+Finished computing initial states: 1 distinct state generated at 2024-10-09 13:00:40.
 @!@!@ENDMSG 2190 @!@!@
 @!@!@STARTMSG 2192:0 @!@!@
-Checking temporal properties for the current state space with 9882 total distinct states at (2024-10-09 12:21:36)
+Checking temporal properties for the current state space with 11588 total distinct states at (2024-10-09 13:00:43)
 @!@!@ENDMSG 2192 @!@!@
 @!@!@STARTMSG 2267:0 @!@!@
-Finished checking temporal properties in 00s at 2024-10-09 12:21:37
+Finished checking temporal properties in 00s at 2024-10-09 13:00:43
 @!@!@ENDMSG 2267 @!@!@
 @!@!@STARTMSG 2200:0 @!@!@
-Progress(8) at 2024-10-09 12:21:37: 72 268 states generated (72 268 s/min), 9 882 distinct states found (9 882 ds/min), 6 385 states left on queue.
+Progress(8) at 2024-10-09 13:00:43: 101 773 states generated (101 773 s/min), 11 588 distinct states found (11 588 ds/min), 5 653 states left on queue.
+@!@!@ENDMSG 2200 @!@!@
+@!@!@STARTMSG 2200:0 @!@!@
+Progress(14) at 2024-10-09 13:00:51: 421 876 states generated, 31 250 distinct states found, 0 states left on queue.
 @!@!@ENDMSG 2200 @!@!@
 @!@!@STARTMSG 2192:0 @!@!@
-Checking temporal properties for the current state space with 114840 total distinct states at (2024-10-09 12:22:37)
+Checking temporal properties for the complete state space with 31250 total distinct states at (2024-10-09 13:00:51)
 @!@!@ENDMSG 2192 @!@!@
 @!@!@STARTMSG 2267:0 @!@!@
-Finished checking temporal properties in 05s at 2024-10-09 12:22:42
+Finished checking temporal properties in 01s at 2024-10-09 13:00:52
 @!@!@ENDMSG 2267 @!@!@
+@!@!@STARTMSG 2193:0 @!@!@
+Model checking completed. No error has been found.
+  Estimates of the probability that TLC did not check all reachable states
+  because two distinct states had the same fingerprint:
+  calculated (optimistic):  val = 6.6E-10
+  based on the actual fingerprints:  val = 5.7E-10
+@!@!@ENDMSG 2193 @!@!@
 @!@!@STARTMSG 2200:0 @!@!@
-Progress(11) at 2024-10-09 12:22:42: 1 124 083 states generated (1 051 815 s/min), 114 840 distinct states found (104 958 ds/min), 54 513 states left on queue.
+Progress(14) at 2024-10-09 13:00:52: 421 876 states generated (1 971 843 s/min), 31 250 distinct states found (146 062 ds/min), 0 states left on queue.
 @!@!@ENDMSG 2200 @!@!@
-@!@!@STARTMSG 2192:0 @!@!@
-Checking temporal properties for the current state space with 195601 total distinct states at (2024-10-09 12:23:42)
-@!@!@ENDMSG 2192 @!@!@
-@!@!@STARTMSG 2267:0 @!@!@
-Finished checking temporal properties in 10s at 2024-10-09 12:23:53
-@!@!@ENDMSG 2267 @!@!@
-@!@!@STARTMSG 2200:0 @!@!@
-Progress(12) at 2024-10-09 12:23:53: 2 023 548 states generated (899 465 s/min), 195 601 distinct states found (80 761 ds/min), 83 411 states left on queue.
-@!@!@ENDMSG 2200 @!@!@
-@!@!@STARTMSG 2192:0 @!@!@
-Checking temporal properties for the current state space with 273873 total distinct states at (2024-10-09 12:24:53)
-@!@!@ENDMSG 2192 @!@!@
-@!@!@STARTMSG 2267:0 @!@!@
-Finished checking temporal properties in 15s at 2024-10-09 12:25:08
-@!@!@ENDMSG 2267 @!@!@
-@!@!@STARTMSG 2200:0 @!@!@
-Progress(13) at 2024-10-09 12:25:08: 2 937 903 states generated (914 355 s/min), 273 873 distinct states found (78 272 ds/min), 106 861 states left on queue.
-@!@!@ENDMSG 2200 @!@!@
-@!@!@STARTMSG 2192:0 @!@!@
-Checking temporal properties for the current state space with 335662 total distinct states at (2024-10-09 12:26:08)
-@!@!@ENDMSG 2192 @!@!@
-@!@!@STARTMSG 2267:0 @!@!@
-Finished checking temporal properties in 20s at 2024-10-09 12:26:28
-@!@!@ENDMSG 2267 @!@!@
-@!@!@STARTMSG 2200:0 @!@!@
-Progress(14) at 2024-10-09 12:26:28: 3 777 819 states generated (839 916 s/min), 335 662 distinct states found (61 789 ds/min), 117 644 states left on queue.
-@!@!@ENDMSG 2200 @!@!@
-@!@!@STARTMSG 2192:0 @!@!@
-Checking temporal properties for the current state space with 403717 total distinct states at (2024-10-09 12:27:28)
-@!@!@ENDMSG 2192 @!@!@
-@!@!@STARTMSG 2267:0 @!@!@
-Finished checking temporal properties in 24s at 2024-10-09 12:27:53
-@!@!@ENDMSG 2267 @!@!@
-@!@!@STARTMSG 2200:0 @!@!@
-Progress(14) at 2024-10-09 12:27:53: 4 569 244 states generated (791 425 s/min), 403 717 distinct states found (68 055 ds/min), 135 327 states left on queue.
-@!@!@ENDMSG 2200 @!@!@
+@!@!@STARTMSG 2199:0 @!@!@
+421876 states generated, 31250 distinct states found, 0 states left on queue.
+@!@!@ENDMSG 2199 @!@!@
+@!@!@STARTMSG 2194:0 @!@!@
+The depth of the complete state graph search is 14.
+@!@!@ENDMSG 2194 @!@!@
+@!@!@STARTMSG 2268:0 @!@!@
+The average outdegree of the complete state graph is 1 (minimum is 0, the maximum 10 and the 95th percentile is 3).
+@!@!@ENDMSG 2268 @!@!@
+@!@!@STARTMSG 2186:0 @!@!@
+Finished in 12838ms at (2024-10-09 13:00:52)
+@!@!@ENDMSG 2186 @!@!@

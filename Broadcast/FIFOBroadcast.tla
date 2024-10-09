@@ -1,4 +1,5 @@
------------------------- MODULE BestEffortBroadcast ------------------------
+--------------------------- MODULE FIFOBroadcast ---------------------------
+
 
 EXTENDS 
     Naturals,
@@ -78,11 +79,19 @@ VARIABLES
     bc_failed,
     bc_messages_used
 
-bc_vars == << bc_sent, bc_delivered, bc_failed, bc_messages_used >>
+bc_vars == << bc_sent, bc_delivered, bc_failed, bc_messages_used, bc_state >>
 
 vars == << pl_vars, bc_vars >>
 
+\* bc state is a partial function from processor id to 
+\* its state, consisting of
+\* - it's lsn sequence number
+\* - set of messags it has received
+\* - set of messages it has delivered
+BC_State = []
+
 ----------------------------------------------------------------------------
+
 
 \* broadcast message m from process p
 beb_broadcast(p, m) ==
@@ -155,6 +164,4 @@ Prop_BEB3_NoCreation == [](BagToSet(bc_delivered) \subseteq BagToSet(bc_sent))
 
 =============================================================================
 \* Modification History
-\* Last modified Wed Oct 09 11:12:20 CEST 2024 by jonasspenger
-\* Created Wed Oct 09 10:21:00 CEST 2024 by jonasspenger
-
+\* Created Wed Oct 09 12:56:24 CEST 2024 by jonasspenger
