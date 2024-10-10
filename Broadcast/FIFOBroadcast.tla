@@ -176,6 +176,9 @@ Spec ==
 TypeInv ==
     /\ pl_sent \subseteq PL_Rich_Message
     /\ pl_delivered \subseteq PL_Rich_Message
+    /\ bc_failed \subseteq Procs
+    /\ bc_messages_used \subseteq Messages
+    /\ bc_state \in [Procs -> BC_ProcState]
 
 \* BEB1: Validity: If a correct process broadcasts a message m, then every correct
 \* process eventually delivers m.
