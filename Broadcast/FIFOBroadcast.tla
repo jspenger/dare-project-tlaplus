@@ -189,7 +189,10 @@ Prop_BEB1_Validity ==
                 (<>([sdr |-> p, rcv |-> q, msg |-> m] \in DOMAIN bc_delivered)))
 
 \* BEB2: No duplication: No message is delivered more than once.
-Prop_BEB2_NoDuplication == []\A m \in BagToSet(bc_delivered) : (CopiesIn(m, bc_delivered) <= 1)
+Prop_BEB2_NoDuplication == 
+    []\A m \in BagToSet(bc_delivered) : 
+        (IF BagIn(m, bc_delivered) THEN bc_delivered[m] ELSE 0) <= 1
+        \* (CopiesIn(m, bc_delivered) <= 1) \* This doesn't work on the Toolbox, but works in VS Code
 
 \* BEB3: No creation: If a process delivers a message m with sender s, then m was
 \* previously broadcast by process s.
@@ -204,6 +207,12 @@ PROP_FIFODelivery ==
         \/ \E mp \in bc_state[p].delivered : 
             mp.sdr = m.sdr /\ (mp.id + 1 = m.id)
 
+----------------------------------------------------------------------------
+
+\* Let's try to prove a small property with TLAPS.
+
+
 =============================================================================
 \* Modification History
+\* Last modified Thu Oct 10 11:46:57 CEST 2024 by jonasspenger
 \* Created Wed Oct 09 12:56:24 CEST 2024 by jonasspenger
