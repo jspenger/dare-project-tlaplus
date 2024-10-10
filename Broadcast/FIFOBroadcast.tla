@@ -131,6 +131,7 @@ beb_broadcast(p, m) ==
 
 \* deliver a broadcast message m to process p from process q
 beb_deliver(p, q, m, id) == 
+    \* Guard against non-fifo-ordered delivery
     /\  \/ id = 0
         \/ id > 0 /\ [sdr |-> q, id |-> (id-1)] \in {[sdr |-> x.sdr, id |-> x.id] : x \in bc_state[p].delivered }
     /\ p \notin bc_failed
