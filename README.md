@@ -12,6 +12,7 @@ The models should be available once loaded.
 
 The project consists of three parts.
 
+### Perfect Point-to-Point Links
 First, we have a TLA+ specification for Perfect Point-to-Point Links. 
 This is a simple communication abstraction, for seding and receiving messages between processes.
 It consists of the following.
@@ -21,5 +22,39 @@ It consists of the following.
 * A model which checks the properties for 2 processes which each send 2 messages to each other (including themselves), i.e. 4 messages in total
 * TLAPS proofs for the properties. The proofs are almost complete, there are still some small things which need to be proven
 
+### Broadcast
+* We limit the total number of messages sent in the system to a number, not to a number per process.
+
 ## References
 > [1] Cachin, Christian, Rachid Guerraoui, and Luís Rodrigues. Introduction to reliable and secure distributed programming. Springer Science & Business Media, 2011.
+
+
+<!-- TLC threw an unexpected exception.
+
+This was probably caused by an error in the spec or model.
+
+See the User Output or TLC Console for clues to what happened.
+
+The exception was a java.lang.RuntimeException
+
+: TLC encountered a non-enumerable quantifier bound
+
+Nat.
+
+line 108, col 18 to line 108, col 20 of module FIFOBroadcast
+
+Show error trace
+The error occurred when TLC was evaluating the nested
+
+expressions at the following positions:
+
+0. 
+Line 107, column 5 to line 113, column 59 in FIFOBroadcast
+
+1. 
+Line 107, column 8 to line 107, column 25 in FIFOBroadcast
+
+2. 
+Line 108, column 8 to line 111, column 89 in FIFOBroadcast
+
+ -->
