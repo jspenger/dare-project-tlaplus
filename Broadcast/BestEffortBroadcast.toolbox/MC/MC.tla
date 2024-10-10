@@ -2,20 +2,20 @@
 EXTENDS BestEffortBroadcast, TLC
 
 \* CONSTANT definitions @modelParameterConstants:0Correct
-const_172846553220018000 == 
+const_1728564296764160000 == 
 {1, 2}
 ----
 
 \* CONSTANT definitions @modelParameterConstants:1Procs
-const_172846553220019000 == 
-{1, 2}
+const_1728564296764161000 == 
+{1, 2, 3}
 ----
 
 \* CONSTANT definitions @modelParameterConstants:2Messages
-const_172846553220020000 == 
-{1, 2}
+const_1728564296764162000 == 
+{1, 2, 3}
 ----
 
 =============================================================================
 \* Modification History
-\* Created Wed Oct 09 11:18:52 CEST 2024 by jonasspenger
+\* Created Thu Oct 10 14:44:56 CEST 2024 by jonasspenger

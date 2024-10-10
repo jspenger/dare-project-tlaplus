@@ -2,7 +2,8 @@
 
 EXTENDS 
     Naturals,
-    FiniteSets
+    FiniteSets,
+    Bags
 
 CONSTANTS
     Procs,
@@ -64,7 +65,6 @@ pl_deliver(p, q, m) ==
         /\ UNCHANGED pl_sent
 
 PL_Init ==
-    
     /\ pl_sent = {}
     /\ pl_delivered = {}
 
@@ -72,33 +72,63 @@ PL_Init ==
 
 \* Back to the best-effort broadcast module
 
-vars == << pl_vars >>
+VARIABLES
+    bc_sent,
+    bc_delivered,
+    bc_failed,
+    bc_messages_used
+
+bc_vars == << bc_sent, bc_delivered, bc_failed, bc_messages_used >>
+
+vars == << pl_vars, bc_vars >>
 
 ----------------------------------------------------------------------------
 
 \* broadcast message m from process p
 beb_broadcast(p, m) ==
-    LET qs == Procs IN
-    LET bc_msg == [sdr |-> p, msg |-> m]
-        IN
-        pl_bcast_send(p, qs, bc_msg)
+    /\ m \notin bc_messages_used
+    /\ bc_messages_used' = bc_messages_used \union {m} 
+    /\ p \notin bc_failed
+    /\ LET qs == Procs IN
+        LET bc_msg == [sdr |-> p, msg |-> m]
+            IN
+            pl_bcast_send(p, qs, bc_msg)
+    /\ bc_sent' = bc_sent (+) SetToBag({[sdr |-> p, rcv |-> q, msg |-> m] : q \in Procs})
+    /\ UNCHANGED << bc_delivered, bc_failed >>
 
 \* deliver a broadcast message m to process p from process q
 beb_deliver(p, q, m) == 
-    LET bc_msg == [sdr |-> q, msg |-> m]
-        IN
-        pl_deliver(q, p, bc_msg)
+    /\ p \notin bc_failed
+    /\ LET bc_msg == [sdr |-> q, msg |-> m]
+            IN
+            pl_deliver(q, p, bc_msg)
+    /\ bc_delivered' = bc_delivered (+) SetToBag({ [sdr |-> q, rcv |-> p, msg |-> m] })
+    /\ UNCHANGED << bc_sent, bc_failed, bc_messages_used >>
+
+beb_fail(p) ==
+    /\ p \notin Correct
+    /\ bc_failed' = bc_failed \union {p}
+    /\ UNCHANGED << pl_vars, bc_sent, bc_delivered, bc_messages_used >>
+
+BEB_Init ==
+    /\ bc_sent = EmptyBag
+    /\ bc_delivered = EmptyBag
+    /\ bc_failed = {}
+    /\ bc_messages_used = {}
 
 Init == 
     /\ PL_Init
+    /\ BEB_Init
 
-Next == \E p \in Procs, q \in Procs, m \in Messages : 
+Next == \E p \in Procs, q \in Procs, m \in Messages :
     \/ beb_broadcast(p, m)
     \/ beb_deliver(p, q, m)
+    \/ beb_fail(p)
 
 Spec ==
     /\ Init
     /\ [][Next]_vars
+    /\ WF_vars(Next)
 
 ----------------------------------------------------------------------------
 
@@ -108,8 +138,26 @@ TypeInv ==
     /\ pl_sent \subseteq PL_Sent
     /\ pl_delivered \subseteq PL_Delivered
 
+\* BEB1: Validity: If a correct process broadcasts a message m, then every correct
+\* process eventually delivers m.
+Prop_BEB1_Validity ==
+    []\A p \in Procs, q \in Procs, m \in Messages : 
+        (p \in Correct /\ q \in Correct) => 
+            (([sdr |-> p, rcv |-> q, msg |-> m] \in DOMAIN bc_sent) => 
+                (<>([sdr |-> p, rcv |-> q, msg |-> m] \in DOMAIN bc_delivered)))
+
+\* BEB2: No duplication: No message is delivered more than once.
+Prop_BEB2_NoDuplication == 
+    []\A m \in BagToSet(bc_delivered) : 
+        (IF BagIn(m, bc_delivered) THEN bc_delivered[m] ELSE 0) <= 1
+        \* (CopiesIn(m, bc_delivered) <= 1) \* This doesn't work on the Toolbox, but works in VS Code
+
+\* BEB3: No creation: If a process delivers a message m with sender s, then m was
+\* previously broadcast by process s.
+Prop_BEB3_NoCreation == [](BagToSet(bc_delivered) \subseteq BagToSet(bc_sent))
+
 =============================================================================
 \* Modification History
-\* Last modified Wed Oct 09 11:12:20 CEST 2024 by jonasspenger
+\* Last modified Thu Oct 10 14:28:19 CEST 2024 by jonasspenger
 \* Created Wed Oct 09 10:21:00 CEST 2024 by jonasspenger
 

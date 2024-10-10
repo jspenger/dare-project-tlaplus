@@ -2,7 +2,7 @@
 TLC2 Version 2.19 of 08 August 2024 (rev: 5a47802)
 @!@!@ENDMSG 2262 @!@!@
 @!@!@STARTMSG 2187:0 @!@!@
-Running breadth-first search Model-Checking with fp 10 and seed 2523886860123301066 with 5 workers on 10 cores with 1214MB heap and 2730MB offheap memory [pid: 2641] (Mac OS X 10.16 x86_64, AdoptOpenJDK 14.0.1 x86_64, OffHeapDiskFPSet, DiskStateQueue).
+Running breadth-first search Model-Checking with fp 25 and seed -2761445852050571573 with 5 workers on 10 cores with 1214MB heap and 2730MB offheap memory [pid: 28231] (Mac OS X 10.16 x86_64, AdoptOpenJDK 14.0.1 x86_64, OffHeapDiskFPSet, DiskStateQueue).
 @!@!@ENDMSG 2187 @!@!@
 @!@!@STARTMSG 2220:0 @!@!@
 Starting SANY...
@@ -12,172 +12,327 @@ Parsing file /Users/jonasspenger/work/dare-project-tlaplus/Broadcast/BestEffortB
 Parsing file /Applications/TLA+ Toolbox.app/Contents/Eclipse/plugins/org.lamport.tlatools_1.0.0.202408081326/tla2sany/StandardModules/TLC.tla
 Parsing file /Applications/TLA+ Toolbox.app/Contents/Eclipse/plugins/org.lamport.tlatools_1.0.0.202408081326/tla2sany/StandardModules/Naturals.tla
 Parsing file /usr/local/lib/tlaps/FiniteSets.tla
+Parsing file /usr/local/lib/tlaps/Bags.tla
+Parsing file /usr/local/lib/tlaps/TLAPS.tla
+Parsing file /usr/local/lib/tlaps/FiniteSetTheorems.tla
+Parsing file /usr/local/lib/tlaps/SequenceTheorems.tla
+Parsing file /Applications/TLA+ Toolbox.app/Contents/Eclipse/plugins/org.lamport.tlatools_1.0.0.202408081326/tla2sany/StandardModules/Integers.tla
+Parsing file /usr/local/lib/tlaps/Functions.tla
+Parsing file /usr/local/lib/tlaps/WellFoundedInduction.tla
+Parsing file /usr/local/lib/tlaps/NaturalsInduction.tla
 Parsing file /Applications/TLA+ Toolbox.app/Contents/Eclipse/plugins/org.lamport.tlatools_1.0.0.202408081326/tla2sany/StandardModules/Sequences.tla
 Semantic processing of module Naturals
 Semantic processing of module Sequences
 Semantic processing of module FiniteSets
-Semantic processing of module BestEffortBroadcast
 Semantic processing of module TLC
+Semantic processing of module TLAPS
+Semantic processing of module Integers
+Semantic processing of module Functions
+Semantic processing of module NaturalsInduction
+Semantic processing of module WellFoundedInduction
+Semantic processing of module FiniteSetTheorems
+Semantic processing of module SequenceTheorems
+Semantic processing of module Bags
+Semantic processing of module BestEffortBroadcast
 Semantic processing of module MC
 @!@!@STARTMSG 2219:0 @!@!@
 SANY finished.
 @!@!@ENDMSG 2219 @!@!@
 @!@!@STARTMSG 2185:0 @!@!@
-Starting... (2024-10-09 11:18:53)
+Starting... (2024-10-10 14:44:58)
 @!@!@ENDMSG 2185 @!@!@
+@!@!@STARTMSG 2212:0 @!@!@
+Implied-temporal checking--satisfiability problem has 1 branches.
+@!@!@ENDMSG 2212 @!@!@
 @!@!@STARTMSG 2189:0 @!@!@
 Computing initial states...
 @!@!@ENDMSG 2189 @!@!@
 @!@!@STARTMSG 2190:0 @!@!@
-Finished computing initial states: 1 distinct state generated at 2024-10-09 11:18:53.
+Finished computing initial states: 1 distinct state generated at 2024-10-10 14:44:58.
 @!@!@ENDMSG 2190 @!@!@
+@!@!@STARTMSG 2192:0 @!@!@
+Checking temporal properties for the current state space with 16536 total distinct states at (2024-10-10 14:45:01)
+@!@!@ENDMSG 2192 @!@!@
+@!@!@STARTMSG 2267:0 @!@!@
+Finished checking temporal properties in 00s at 2024-10-10 14:45:02
+@!@!@ENDMSG 2267 @!@!@
+@!@!@STARTMSG 2200:0 @!@!@
+Progress(10) at 2024-10-10 14:45:02: 152 747 states generated (152 747 s/min), 16 536 distinct states found (16 536 ds/min), 7 045 states left on queue.
+@!@!@ENDMSG 2200 @!@!@
+@!@!@STARTMSG 2200:0 @!@!@
+Progress(14) at 2024-10-10 14:45:05: 421 876 states generated, 31 250 distinct states found, 0 states left on queue.
+@!@!@ENDMSG 2200 @!@!@
+@!@!@STARTMSG 2192:0 @!@!@
+Checking temporal properties for the complete state space with 31250 total distinct states at (2024-10-10 14:45:05)
+@!@!@ENDMSG 2192 @!@!@
+@!@!@STARTMSG 2267:0 @!@!@
+Finished checking temporal properties in 01s at 2024-10-10 14:45:06
+@!@!@ENDMSG 2267 @!@!@
 @!@!@STARTMSG 2193:0 @!@!@
 Model checking completed. No error has been found.
   Estimates of the probability that TLC did not check all reachable states
   because two distinct states had the same fingerprint:
-  calculated (optimistic):  val = 8.1E-14
+  calculated (optimistic):  val = 6.6E-10
+  based on the actual fingerprints:  val = 2.5E-11
 @!@!@ENDMSG 2193 @!@!@
 @!@!@STARTMSG 2201:0 @!@!@
-The coverage statistics at 2024-10-09 11:18:54
+The coverage statistics at 2024-10-10 14:45:07
 @!@!@ENDMSG 2201 @!@!@
 @!@!@STARTMSG 2773:0 @!@!@
-<Init line 92, col 1 to line 92, col 4 of module BestEffortBroadcast>: 1:1
+<Init line 119, col 1 to line 119, col 4 of module BestEffortBroadcast>: 1:1
 @!@!@ENDMSG 2773 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 93, col 5 to line 93, col 14 of module BestEffortBroadcast: 1
+  line 120, col 5 to line 121, col 15 of module BestEffortBroadcast: 1
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2772:0 @!@!@
-<pl_bcast_send line 38, col 1 to line 38, col 23 of module BestEffortBroadcast>: 106:1000
+<beb_broadcast line 88, col 1 to line 88, col 19 of module BestEffortBroadcast>: 3144:28515
 @!@!@ENDMSG 2772 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 39, col 8 to line 39, col 18 of module BestEffortBroadcast: 6000
+  line 89, col 8 to line 89, col 32 of module BestEffortBroadcast: 873048
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  |line 39, col 8 to line 39, col 8 of module BestEffortBroadcast: 5000
+  |line 89, col 8 to line 89, col 8 of module BestEffortBroadcast: 844533
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  |line 39, col 14 to line 39, col 18 of module BestEffortBroadcast: 5000
+  |line 89, col 17 to line 89, col 32 of module BestEffortBroadcast: 844533
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 40, col 8 to line 40, col 25 of module BestEffortBroadcast: 6000
+  line 90, col 8 to line 90, col 54 of module BestEffortBroadcast: 28515
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  |line 40, col 8 to line 40, col 9 of module BestEffortBroadcast: 5000
+  |line 90, col 28 to line 90, col 54 of module BestEffortBroadcast: 34200
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  |line 40, col 21 to line 40, col 25 of module BestEffortBroadcast: 5000
+  line 91, col 8 to line 91, col 25 of module BestEffortBroadcast: 62715
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 43, col 32 to line 43, col 48 of module BestEffortBroadcast: 8000
+  |line 91, col 8 to line 91, col 8 of module BestEffortBroadcast: 34200
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  |line 43, col 32 to line 43, col 33 of module BestEffortBroadcast: 6000
+  |line 91, col 17 to line 91, col 25 of module BestEffortBroadcast: 34200
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  |line 43, col 42 to line 43, col 48 of module BestEffortBroadcast: 6000
+  line 40, col 8 to line 40, col 18 of module BestEffortBroadcast: 57030
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 43, col 26 to line 43, col 28 of module BestEffortBroadcast: 5000
+  |line 40, col 8 to line 40, col 8 of module BestEffortBroadcast: 28515
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  |line 40, col 14 to line 40, col 18 of module BestEffortBroadcast: 28515
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 41, col 8 to line 41, col 25 of module BestEffortBroadcast: 57030
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  |line 41, col 8 to line 41, col 9 of module BestEffortBroadcast: 28515
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  |line 41, col 21 to line 41, col 25 of module BestEffortBroadcast: 28515
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 44, col 32 to line 44, col 48 of module BestEffortBroadcast: 171090
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  |line 44, col 32 to line 44, col 33 of module BestEffortBroadcast: 85545
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  |line 44, col 42 to line 44, col 48 of module BestEffortBroadcast: 85545
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 44, col 26 to line 44, col 28 of module BestEffortBroadcast: 28515
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2775:0 @!@!@
-  |line 41, col 19 to line 41, col 65 of module BestEffortBroadcast: 5000:15000
+  |line 42, col 19 to line 42, col 65 of module BestEffortBroadcast: 28515:114060
 @!@!@ENDMSG 2775 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  ||line 41, col 20 to line 41, col 52 of module BestEffortBroadcast: 10000
+  ||line 42, col 20 to line 42, col 52 of module BestEffortBroadcast: 85545
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  ||line 41, col 62 to line 41, col 63 of module BestEffortBroadcast: 5000
+  ||line 42, col 62 to line 42, col 63 of module BestEffortBroadcast: 28515
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 44, col 16 to line 44, col 44 of module BestEffortBroadcast: 1000
+  line 45, col 16 to line 45, col 44 of module BestEffortBroadcast: 28515
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  |line 44, col 27 to line 44, col 44 of module BestEffortBroadcast: 1000
+  |line 45, col 27 to line 45, col 44 of module BestEffortBroadcast: 28515
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  ||line 44, col 27 to line 44, col 33 of module BestEffortBroadcast: 1000
+  ||line 45, col 27 to line 45, col 33 of module BestEffortBroadcast: 28515
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  ||line 44, col 42 to line 44, col 44 of module BestEffortBroadcast: 1000
+  ||line 45, col 42 to line 45, col 44 of module BestEffortBroadcast: 28515
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2775:0 @!@!@
-  |||line 41, col 19 to line 41, col 65 of module BestEffortBroadcast: 1000:3024
+  |||line 42, col 19 to line 42, col 65 of module BestEffortBroadcast: 28515:114456
 @!@!@ENDMSG 2775 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  ||||line 41, col 20 to line 41, col 52 of module BestEffortBroadcast: 2000
+  ||||line 42, col 20 to line 42, col 52 of module BestEffortBroadcast: 85545
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  ||||line 41, col 62 to line 41, col 63 of module BestEffortBroadcast: 1000
+  ||||line 42, col 62 to line 42, col 63 of module BestEffortBroadcast: 28515
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 45, col 16 to line 45, col 37 of module BestEffortBroadcast: 1000
+  line 46, col 16 to line 46, col 37 of module BestEffortBroadcast: 28515
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 95, col 27 to line 95, col 27 of module BestEffortBroadcast: 28515
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 95, col 30 to line 95, col 31 of module BestEffortBroadcast: 28515
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 95, col 34 to line 95, col 39 of module BestEffortBroadcast: 28515
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 96, col 8 to line 96, col 89 of module BestEffortBroadcast: 28515
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  |line 96, col 19 to line 96, col 89 of module BestEffortBroadcast: 28515
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  ||line 96, col 19 to line 96, col 25 of module BestEffortBroadcast: 28515
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  ||line 96, col 31 to line 96, col 89 of module BestEffortBroadcast: 28515
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  |||line 96, col 40 to line 96, col 88 of module BestEffortBroadcast: 28515
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  ||||line 96, col 41 to line 96, col 73 of module BestEffortBroadcast: 85545
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  ||||line 96, col 83 to line 96, col 87 of module BestEffortBroadcast: 28515
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 97, col 8 to line 97, col 46 of module BestEffortBroadcast: 28515
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2772:0 @!@!@
-<pl_deliver line 56, col 1 to line 56, col 19 of module BestEffortBroadcast>: 518:2000
+<beb_deliver line 100, col 1 to line 100, col 20 of module BestEffortBroadcast>: 20161:112589
 @!@!@ENDMSG 2772 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 57, col 8 to line 57, col 18 of module BestEffortBroadcast: 7000
+  line 101, col 8 to line 101, col 25 of module BestEffortBroadcast: 957122
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  |line 57, col 8 to line 57, col 8 of module BestEffortBroadcast: 5000
+  |line 101, col 8 to line 101, col 8 of module BestEffortBroadcast: 844533
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  |line 57, col 14 to line 57, col 18 of module BestEffortBroadcast: 5000
+  |line 101, col 17 to line 101, col 25 of module BestEffortBroadcast: 844533
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 58, col 8 to line 58, col 18 of module BestEffortBroadcast: 7000
+  line 58, col 8 to line 58, col 18 of module BestEffortBroadcast: 816371
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  |line 58, col 8 to line 58, col 8 of module BestEffortBroadcast: 5000
+  |line 58, col 8 to line 58, col 8 of module BestEffortBroadcast: 703782
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  |line 58, col 14 to line 58, col 18 of module BestEffortBroadcast: 5000
+  |line 58, col 14 to line 58, col 18 of module BestEffortBroadcast: 703782
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 61, col 12 to line 61, col 25 of module BestEffortBroadcast: 7000
+  line 59, col 8 to line 59, col 18 of module BestEffortBroadcast: 816371
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  |line 61, col 12 to line 61, col 13 of module BestEffortBroadcast: 5000
+  |line 59, col 8 to line 59, col 8 of module BestEffortBroadcast: 703782
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  |line 61, col 19 to line 61, col 25 of module BestEffortBroadcast: 5000
+  |line 59, col 14 to line 59, col 18 of module BestEffortBroadcast: 703782
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 62, col 12 to line 62, col 33 of module BestEffortBroadcast: 6000
+  line 62, col 12 to line 62, col 25 of module BestEffortBroadcast: 816371
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  |line 62, col 12 to line 62, col 13 of module BestEffortBroadcast: 4000
+  |line 62, col 12 to line 62, col 13 of module BestEffortBroadcast: 703782
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  |line 62, col 22 to line 62, col 33 of module BestEffortBroadcast: 4000
+  |line 62, col 19 to line 62, col 25 of module BestEffortBroadcast: 703782
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 63, col 12 to line 63, col 51 of module BestEffortBroadcast: 2000
+  line 63, col 12 to line 63, col 33 of module BestEffortBroadcast: 337678
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 64, col 12 to line 64, col 28 of module BestEffortBroadcast: 2000
+  |line 63, col 12 to line 63, col 13 of module BestEffortBroadcast: 225089
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  |line 63, col 22 to line 63, col 33 of module BestEffortBroadcast: 225089
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 64, col 12 to line 64, col 51 of module BestEffortBroadcast: 112589
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 65, col 12 to line 65, col 28 of module BestEffortBroadcast: 112589
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 104, col 24 to line 104, col 24 of module BestEffortBroadcast: 703782
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 104, col 27 to line 104, col 27 of module BestEffortBroadcast: 703782
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 104, col 30 to line 104, col 35 of module BestEffortBroadcast: 703782
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 105, col 8 to line 105, col 87 of module BestEffortBroadcast: 112589
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 106, col 8 to line 106, col 59 of module BestEffortBroadcast: 112589
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2772:0 @!@!@
+<beb_fail line 108, col 1 to line 108, col 11 of module BestEffortBroadcast>: 7944:281511
+@!@!@ENDMSG 2772 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 109, col 8 to line 109, col 23 of module BestEffortBroadcast: 1126044
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  |line 109, col 8 to line 109, col 8 of module BestEffortBroadcast: 844533
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  |line 109, col 17 to line 109, col 23 of module BestEffortBroadcast: 844533
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 110, col 8 to line 110, col 40 of module BestEffortBroadcast: 281511
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 111, col 8 to line 111, col 71 of module BestEffortBroadcast: 281511
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2774:0 @!@!@
-<TypeInv line 107, col 1 to line 107, col 7 of module BestEffortBroadcast>
+<TypeInv line 137, col 1 to line 137, col 7 of module BestEffortBroadcast>
 @!@!@ENDMSG 2774 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 108, col 5 to line 109, col 42 of module BestEffortBroadcast: 625
+  line 138, col 5 to line 139, col 42 of module BestEffortBroadcast: 31250
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2774:0 @!@!@
+<Action line 151, col 7 to line 152, col 68 of module BestEffortBroadcast>
+@!@!@ENDMSG 2774 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 151, col 7 to line 152, col 68 of module BestEffortBroadcast: 31250
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  |line 152, col 9 to line 152, col 68 of module BestEffortBroadcast: 135000
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  |line 151, col 16 to line 151, col 37 of module BestEffortBroadcast: 31250
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2774:0 @!@!@
+<Action line 157, col 28 to line 157, col 77 of module BestEffortBroadcast>
+@!@!@ENDMSG 2774 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 157, col 28 to line 157, col 77 of module BestEffortBroadcast: 31250
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2202:0 @!@!@
 End of statistics.
 @!@!@ENDMSG 2202 @!@!@
 @!@!@STARTMSG 2200:0 @!@!@
-Progress(13) at 2024-10-09 11:18:54: 3 001 states generated (105 793 s/min), 625 distinct states found (22 032 ds/min), 0 states left on queue.
+Progress(14) at 2024-10-10 14:45:07: 421 876 states generated (2 407 509 s/min), 31 250 distinct states found (178 333 ds/min), 0 states left on queue.
 @!@!@ENDMSG 2200 @!@!@
 @!@!@STARTMSG 2199:0 @!@!@
-3001 states generated, 625 distinct states found, 0 states left on queue.
+421876 states generated, 31250 distinct states found, 0 states left on queue.
 @!@!@ENDMSG 2199 @!@!@
 @!@!@STARTMSG 2194:0 @!@!@
-The depth of the complete state graph search is 13.
+The depth of the complete state graph search is 14.
 @!@!@ENDMSG 2194 @!@!@
 @!@!@STARTMSG 2268:0 @!@!@
-The average outdegree of the complete state graph is 1 (minimum is 0, the maximum 5 and the 95th percentile is 3).
+The average outdegree of the complete state graph is 1 (minimum is 0, the maximum 10 and the 95th percentile is 3).
 @!@!@ENDMSG 2268 @!@!@
 @!@!@STARTMSG 2186:0 @!@!@
-Finished in 1726ms at (2024-10-09 11:18:54)
+Finished in 10522ms at (2024-10-10 14:45:07)
 @!@!@ENDMSG 2186 @!@!@

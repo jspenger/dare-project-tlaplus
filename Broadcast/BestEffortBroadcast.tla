@@ -147,7 +147,10 @@ Prop_BEB1_Validity ==
                 (<>([sdr |-> p, rcv |-> q, msg |-> m] \in DOMAIN bc_delivered)))
 
 \* BEB2: No duplication: No message is delivered more than once.
-Prop_BEB2_NoDuplication == []\A m \in BagToSet(bc_delivered) : (CopiesIn(m, bc_delivered) <= 1)
+Prop_BEB2_NoDuplication == 
+    []\A m \in BagToSet(bc_delivered) : 
+        (IF BagIn(m, bc_delivered) THEN bc_delivered[m] ELSE 0) <= 1
+        \* (CopiesIn(m, bc_delivered) <= 1) \* This doesn't work on the Toolbox, but works in VS Code
 
 \* BEB3: No creation: If a process delivers a message m with sender s, then m was
 \* previously broadcast by process s.
@@ -155,6 +158,6 @@ Prop_BEB3_NoCreation == [](BagToSet(bc_delivered) \subseteq BagToSet(bc_sent))
 
 =============================================================================
 \* Modification History
-\* Last modified Wed Oct 09 11:12:20 CEST 2024 by jonasspenger
+\* Last modified Thu Oct 10 14:28:19 CEST 2024 by jonasspenger
 \* Created Wed Oct 09 10:21:00 CEST 2024 by jonasspenger
 

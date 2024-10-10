@@ -229,8 +229,6 @@ PROOF
     <2>1 beb_broadcast(p, m) => NoCreation'
         <3> SUFFICES ASSUME beb_broadcast(p, m) /\ NoCreation PROVE NoCreation'
             PROOF OBVIOUS 
-\*        <3> BagToSet(bc_delivered) \subseteq BagToSet(bc_delivered')
-\*            PROOF BY beb_broadcast(p, m) DEF beb_broadcast
         <3>1 BagToSet(bc_delivered) \subseteq BagToSet(bc_broadcasted)
             PROOF BY DEF NoCreation
         <3>2 bc_delivered = bc_delivered'
