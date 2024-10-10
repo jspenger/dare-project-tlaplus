@@ -2,7 +2,7 @@
 TLC2 Version 2.19 of 08 August 2024 (rev: 5a47802)
 @!@!@ENDMSG 2262 @!@!@
 @!@!@STARTMSG 2187:0 @!@!@
-Running breadth-first search Model-Checking with fp 81 and seed 6737785550433652197 with 5 workers on 10 cores with 1214MB heap and 2730MB offheap memory [pid: 25959] (Mac OS X 10.16 x86_64, AdoptOpenJDK 14.0.1 x86_64, OffHeapDiskFPSet, DiskStateQueue).
+Running breadth-first search Model-Checking with fp 3 and seed 9066845211242171645 with 5 workers on 10 cores with 1214MB heap and 2730MB offheap memory [pid: 27115] (Mac OS X 10.16 x86_64, AdoptOpenJDK 14.0.1 x86_64, OffHeapDiskFPSet, DiskStateQueue).
 @!@!@ENDMSG 2187 @!@!@
 @!@!@STARTMSG 2220:0 @!@!@
 Starting SANY...
@@ -39,7 +39,7 @@ Semantic processing of module MC
 SANY finished.
 @!@!@ENDMSG 2219 @!@!@
 @!@!@STARTMSG 2185:0 @!@!@
-Starting... (2024-10-10 13:27:23)
+Starting... (2024-10-10 14:18:03)
 @!@!@ENDMSG 2185 @!@!@
 @!@!@STARTMSG 2212:0 @!@!@
 Implied-temporal checking--satisfiability problem has 1 branches.
@@ -48,35 +48,35 @@ Implied-temporal checking--satisfiability problem has 1 branches.
 Computing initial states...
 @!@!@ENDMSG 2189 @!@!@
 @!@!@STARTMSG 2190:0 @!@!@
-Finished computing initial states: 1 distinct state generated at 2024-10-10 13:27:24.
+Finished computing initial states: 1 distinct state generated at 2024-10-10 14:18:04.
 @!@!@ENDMSG 2190 @!@!@
 @!@!@STARTMSG 2192:0 @!@!@
-Checking temporal properties for the current state space with 3768 total distinct states at (2024-10-10 13:27:27)
+Checking temporal properties for the current state space with 7273 total distinct states at (2024-10-10 14:18:07)
 @!@!@ENDMSG 2192 @!@!@
 @!@!@STARTMSG 2267:0 @!@!@
-Finished checking temporal properties in 00s at 2024-10-10 13:27:27
+Finished checking temporal properties in 00s at 2024-10-10 14:18:07
 @!@!@ENDMSG 2267 @!@!@
 @!@!@STARTMSG 2200:0 @!@!@
-Progress(7) at 2024-10-10 13:27:27: 58 661 states generated (58 661 s/min), 3 770 distinct states found (3 770 ds/min), 2 326 states left on queue.
+Progress(9) at 2024-10-10 14:18:07: 119 161 states generated (119 161 s/min), 7 273 distinct states found (7 273 ds/min), 3 824 states left on queue.
 @!@!@ENDMSG 2200 @!@!@
 @!@!@STARTMSG 2200:0 @!@!@
-Progress(14) at 2024-10-10 13:27:34: 530 803 states generated, 27 422 distinct states found, 0 states left on queue.
+Progress(14) at 2024-10-10 14:18:13: 530 803 states generated, 27 422 distinct states found, 0 states left on queue.
 @!@!@ENDMSG 2200 @!@!@
 @!@!@STARTMSG 2192:0 @!@!@
-Checking temporal properties for the complete state space with 27422 total distinct states at (2024-10-10 13:27:34)
+Checking temporal properties for the complete state space with 27422 total distinct states at (2024-10-10 14:18:13)
 @!@!@ENDMSG 2192 @!@!@
 @!@!@STARTMSG 2267:0 @!@!@
-Finished checking temporal properties in 01s at 2024-10-10 13:27:35
+Finished checking temporal properties in 01s at 2024-10-10 14:18:14
 @!@!@ENDMSG 2267 @!@!@
 @!@!@STARTMSG 2193:0 @!@!@
 Model checking completed. No error has been found.
   Estimates of the probability that TLC did not check all reachable states
   because two distinct states had the same fingerprint:
   calculated (optimistic):  val = 7.5E-10
-  based on the actual fingerprints:  val = 3.9E-11
+  based on the actual fingerprints:  val = 4.8E-10
 @!@!@ENDMSG 2193 @!@!@
 @!@!@STARTMSG 2201:0 @!@!@
-The coverage statistics at 2024-10-10 13:27:36
+The coverage statistics at 2024-10-10 14:18:15
 @!@!@ENDMSG 2201 @!@!@
 @!@!@STARTMSG 2773:0 @!@!@
 <Init line 159, col 1 to line 159, col 4 of module FIFOBroadcast>: 1:1
@@ -85,7 +85,7 @@ The coverage statistics at 2024-10-10 13:27:36
   line 160, col 5 to line 161, col 15 of module FIFOBroadcast: 1
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2772:0 @!@!@
-<beb_broadcast line 121, col 1 to line 121, col 19 of module FIFOBroadcast>: 2758:82377
+<beb_broadcast line 121, col 1 to line 121, col 19 of module FIFOBroadcast>: 2744:82377
 @!@!@ENDMSG 2772 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
   line 122, col 8 to line 122, col 32 of module FIFOBroadcast: 2310849
@@ -97,13 +97,13 @@ The coverage statistics at 2024-10-10 13:27:36
   |line 122, col 17 to line 122, col 32 of module FIFOBroadcast: 2228472
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 123, col 8 to line 123, col 25 of module FIFOBroadcast: 180819
+  line 123, col 8 to line 123, col 25 of module FIFOBroadcast: 180981
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  |line 123, col 8 to line 123, col 8 of module FIFOBroadcast: 98442
+  |line 123, col 8 to line 123, col 8 of module FIFOBroadcast: 98604
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  |line 123, col 17 to line 123, col 25 of module FIFOBroadcast: 98442
+  |line 123, col 17 to line 123, col 25 of module FIFOBroadcast: 98604
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
   line 54, col 8 to line 54, col 18 of module FIFOBroadcast: 164754
@@ -208,22 +208,22 @@ The coverage statistics at 2024-10-10 13:27:36
   line 131, col 8 to line 131, col 46 of module FIFOBroadcast: 82377
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2772:0 @!@!@
-<beb_deliver line 134, col 1 to line 134, col 24 of module FIFOBroadcast>: 19062:80581
+<beb_deliver line 134, col 1 to line 134, col 24 of module FIFOBroadcast>: 19055:80566
 @!@!@ENDMSG 2772 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 136, col 12 to line 136, col 17 of module FIFOBroadcast: 2292397
+  line 136, col 12 to line 136, col 17 of module FIFOBroadcast: 2292388
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
   |line 136, col 12 to line 136, col 13 of module FIFOBroadcast: 2228472
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 137, col 12 to line 137, col 17 of module FIFOBroadcast: 16656
+  line 137, col 12 to line 137, col 17 of module FIFOBroadcast: 16650
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
   |line 137, col 12 to line 137, col 13 of module FIFOBroadcast: 2228472
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 137, col 22 to line 137, col 113 of module FIFOBroadcast: 1502304
+  line 137, col 22 to line 137, col 113 of module FIFOBroadcast: 1502298
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
   |line 137, col 22 to line 137, col 47 of module FIFOBroadcast: 1485648
@@ -232,85 +232,85 @@ The coverage statistics at 2024-10-10 13:27:36
   |line 137, col 53 to line 137, col 113 of module FIFOBroadcast: 1485648
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  ||line 137, col 54 to line 137, col 81 of module FIFOBroadcast: 2125098
+  ||line 137, col 54 to line 137, col 81 of module FIFOBroadcast: 2124792
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
   ||line 137, col 91 to line 137, col 111 of module FIFOBroadcast: 1485648
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 138, col 8 to line 138, col 25 of module FIFOBroadcast: 1172404
+  line 138, col 8 to line 138, col 25 of module FIFOBroadcast: 1172338
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  |line 138, col 8 to line 138, col 8 of module FIFOBroadcast: 1091823
+  |line 138, col 8 to line 138, col 8 of module FIFOBroadcast: 1091772
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  |line 138, col 17 to line 138, col 25 of module FIFOBroadcast: 1091823
+  |line 138, col 17 to line 138, col 25 of module FIFOBroadcast: 1091772
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 73, col 8 to line 73, col 18 of module FIFOBroadcast: 990847
+  line 73, col 8 to line 73, col 18 of module FIFOBroadcast: 990619
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  |line 73, col 8 to line 73, col 8 of module FIFOBroadcast: 910266
+  |line 73, col 8 to line 73, col 8 of module FIFOBroadcast: 910053
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  |line 73, col 14 to line 73, col 18 of module FIFOBroadcast: 910266
+  |line 73, col 14 to line 73, col 18 of module FIFOBroadcast: 910053
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 74, col 8 to line 74, col 18 of module FIFOBroadcast: 990847
+  line 74, col 8 to line 74, col 18 of module FIFOBroadcast: 990619
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  |line 74, col 8 to line 74, col 8 of module FIFOBroadcast: 910266
+  |line 74, col 8 to line 74, col 8 of module FIFOBroadcast: 910053
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  |line 74, col 14 to line 74, col 18 of module FIFOBroadcast: 910266
+  |line 74, col 14 to line 74, col 18 of module FIFOBroadcast: 910053
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 77, col 12 to line 77, col 25 of module FIFOBroadcast: 990847
+  line 77, col 12 to line 77, col 25 of module FIFOBroadcast: 990619
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  |line 77, col 12 to line 77, col 13 of module FIFOBroadcast: 910266
+  |line 77, col 12 to line 77, col 13 of module FIFOBroadcast: 910053
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  |line 77, col 19 to line 77, col 25 of module FIFOBroadcast: 910266
+  |line 77, col 19 to line 77, col 25 of module FIFOBroadcast: 910053
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 78, col 12 to line 78, col 33 of module FIFOBroadcast: 259549
+  line 78, col 12 to line 78, col 33 of module FIFOBroadcast: 259502
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  |line 78, col 12 to line 78, col 13 of module FIFOBroadcast: 178968
+  |line 78, col 12 to line 78, col 13 of module FIFOBroadcast: 178936
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  |line 78, col 22 to line 78, col 33 of module FIFOBroadcast: 178968
+  |line 78, col 22 to line 78, col 33 of module FIFOBroadcast: 178936
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 79, col 12 to line 79, col 51 of module FIFOBroadcast: 80581
+  line 79, col 12 to line 79, col 51 of module FIFOBroadcast: 80566
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 80, col 12 to line 80, col 28 of module FIFOBroadcast: 80581
+  line 80, col 12 to line 80, col 28 of module FIFOBroadcast: 80566
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 141, col 27 to line 141, col 27 of module FIFOBroadcast: 910266
+  line 141, col 27 to line 141, col 27 of module FIFOBroadcast: 910053
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 141, col 30 to line 141, col 30 of module FIFOBroadcast: 910266
+  line 141, col 30 to line 141, col 30 of module FIFOBroadcast: 910053
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 141, col 33 to line 141, col 38 of module FIFOBroadcast: 910266
+  line 141, col 33 to line 141, col 38 of module FIFOBroadcast: 910053
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 142, col 16 to line 142, col 99 of module FIFOBroadcast: 80581
+  line 142, col 16 to line 142, col 99 of module FIFOBroadcast: 80566
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 143, col 8 to line 143, col 87 of module FIFOBroadcast: 80581
+  line 143, col 8 to line 143, col 87 of module FIFOBroadcast: 80566
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 144, col 8 to line 144, col 66 of module FIFOBroadcast: 80581
+  line 144, col 8 to line 144, col 66 of module FIFOBroadcast: 80566
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2772:0 @!@!@
-<beb_fail line 146, col 1 to line 146, col 11 of module FIFOBroadcast>: 5601:372627
+<beb_fail line 146, col 1 to line 146, col 11 of module FIFOBroadcast>: 5622:372141
 @!@!@ENDMSG 2772 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 147, col 8 to line 147, col 23 of module FIFOBroadcast: 2601099
+  line 147, col 8 to line 147, col 23 of module FIFOBroadcast: 2600613
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
   |line 147, col 8 to line 147, col 8 of module FIFOBroadcast: 2228472
@@ -319,7 +319,7 @@ The coverage statistics at 2024-10-10 13:27:36
   |line 147, col 17 to line 147, col 23 of module FIFOBroadcast: 2228472
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 148, col 8 to line 148, col 25 of module FIFOBroadcast: 1115451
+  line 148, col 8 to line 148, col 25 of module FIFOBroadcast: 1114965
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
   |line 148, col 8 to line 148, col 8 of module FIFOBroadcast: 742824
@@ -328,10 +328,10 @@ The coverage statistics at 2024-10-10 13:27:36
   |line 148, col 17 to line 148, col 25 of module FIFOBroadcast: 742824
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 149, col 8 to line 149, col 40 of module FIFOBroadcast: 372627
+  line 149, col 8 to line 149, col 40 of module FIFOBroadcast: 372141
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 150, col 8 to line 150, col 88 of module FIFOBroadcast: 372627
+  line 150, col 8 to line 150, col 88 of module FIFOBroadcast: 372141
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2774:0 @!@!@
 <TypeInv line 177, col 1 to line 177, col 7 of module FIFOBroadcast>
@@ -397,7 +397,7 @@ The coverage statistics at 2024-10-10 13:27:36
 End of statistics.
 @!@!@ENDMSG 2202 @!@!@
 @!@!@STARTMSG 2200:0 @!@!@
-Progress(14) at 2024-10-10 13:27:36: 530 803 states generated (2 261 783 s/min), 27 422 distinct states found (116 846 ds/min), 0 states left on queue.
+Progress(14) at 2024-10-10 14:18:15: 530 803 states generated (2 453 634 s/min), 27 422 distinct states found (126 758 ds/min), 0 states left on queue.
 @!@!@ENDMSG 2200 @!@!@
 @!@!@STARTMSG 2199:0 @!@!@
 530803 states generated, 27422 distinct states found, 0 states left on queue.
@@ -409,5 +409,5 @@ The depth of the complete state graph search is 14.
 The average outdegree of the complete state graph is 1 (minimum is 0, the maximum 10 and the 95th percentile is 3).
 @!@!@ENDMSG 2268 @!@!@
 @!@!@STARTMSG 2186:0 @!@!@
-Finished in 14089ms at (2024-10-10 13:27:36)
+Finished in 12987ms at (2024-10-10 14:18:15)
 @!@!@ENDMSG 2186 @!@!@

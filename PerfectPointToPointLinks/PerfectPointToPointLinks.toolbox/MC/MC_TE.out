@@ -2,7 +2,7 @@
 TLC2 Version 2.19 of 08 August 2024 (rev: 5a47802)
 @!@!@ENDMSG 2262 @!@!@
 @!@!@STARTMSG 2187:0 @!@!@
-Running breadth-first search Model-Checking with fp 68 and seed 4597993288076330263 with 5 workers on 10 cores with 1214MB heap and 2730MB offheap memory [pid: 20647] (Mac OS X 10.16 x86_64, AdoptOpenJDK 14.0.1 x86_64, OffHeapDiskFPSet, DiskStateQueue).
+Running breadth-first search Model-Checking with fp 106 and seed 789446065014052433 with 5 workers on 10 cores with 1214MB heap and 2730MB offheap memory [pid: 27236] (Mac OS X 10.16 x86_64, AdoptOpenJDK 14.0.1 x86_64, OffHeapDiskFPSet, DiskStateQueue).
 @!@!@ENDMSG 2187 @!@!@
 @!@!@STARTMSG 2220:0 @!@!@
 Starting SANY...
@@ -25,7 +25,7 @@ Semantic processing of module MC
 SANY finished.
 @!@!@ENDMSG 2219 @!@!@
 @!@!@STARTMSG 2185:0 @!@!@
-Starting... (2024-10-08 16:42:23)
+Starting... (2024-10-10 14:19:07)
 @!@!@ENDMSG 2185 @!@!@
 @!@!@STARTMSG 2212:0 @!@!@
 Implied-temporal checking--satisfiability problem has 1 branches.
@@ -34,35 +34,35 @@ Implied-temporal checking--satisfiability problem has 1 branches.
 Computing initial states...
 @!@!@ENDMSG 2189 @!@!@
 @!@!@STARTMSG 2190:0 @!@!@
-Finished computing initial states: 1 distinct state generated at 2024-10-08 16:42:23.
+Finished computing initial states: 1 distinct state generated at 2024-10-10 14:19:08.
 @!@!@ENDMSG 2190 @!@!@
 @!@!@STARTMSG 2192:0 @!@!@
-Checking temporal properties for the current state space with 41656 total distinct states at (2024-10-08 16:42:26)
+Checking temporal properties for the current state space with 43461 total distinct states at (2024-10-10 14:19:11)
 @!@!@ENDMSG 2192 @!@!@
 @!@!@STARTMSG 2267:0 @!@!@
-Finished checking temporal properties in 00s at 2024-10-08 16:42:27
+Finished checking temporal properties in 00s at 2024-10-10 14:19:11
 @!@!@ENDMSG 2267 @!@!@
 @!@!@STARTMSG 2200:0 @!@!@
-Progress(10) at 2024-10-08 16:42:27: 431 904 states generated (431 904 s/min), 80 360 distinct states found (80 360 ds/min), 38 696 states left on queue.
+Progress(10) at 2024-10-10 14:19:11: 450 594 states generated (450 594 s/min), 82 541 distinct states found (82 541 ds/min), 39 078 states left on queue.
 @!@!@ENDMSG 2200 @!@!@
 @!@!@STARTMSG 2200:0 @!@!@
-Progress(25) at 2024-10-08 16:42:49: 4 251 529 states generated, 531 441 distinct states found, 0 states left on queue.
+Progress(25) at 2024-10-10 14:19:33: 4 251 529 states generated, 531 441 distinct states found, 0 states left on queue.
 @!@!@ENDMSG 2200 @!@!@
 @!@!@STARTMSG 2192:0 @!@!@
-Checking temporal properties for the complete state space with 531441 total distinct states at (2024-10-08 16:42:49)
+Checking temporal properties for the complete state space with 531441 total distinct states at (2024-10-10 14:19:34)
 @!@!@ENDMSG 2192 @!@!@
 @!@!@STARTMSG 2267:0 @!@!@
-Finished checking temporal properties in 05s at 2024-10-08 16:42:55
+Finished checking temporal properties in 06s at 2024-10-10 14:19:40
 @!@!@ENDMSG 2267 @!@!@
 @!@!@STARTMSG 2193:0 @!@!@
 Model checking completed. No error has been found.
   Estimates of the probability that TLC did not check all reachable states
   because two distinct states had the same fingerprint:
   calculated (optimistic):  val = 1.1E-7
-  based on the actual fingerprints:  val = 1.2E-8
+  based on the actual fingerprints:  val = 7.2E-9
 @!@!@ENDMSG 2193 @!@!@
 @!@!@STARTMSG 2201:0 @!@!@
-The coverage statistics at 2024-10-08 16:42:58
+The coverage statistics at 2024-10-10 14:19:40
 @!@!@ENDMSG 2201 @!@!@
 @!@!@STARTMSG 2773:0 @!@!@
 <PL_Init line 48, col 1 to line 48, col 7 of module PerfectPointToPointLinks>: 1:1
@@ -71,7 +71,7 @@ The coverage statistics at 2024-10-08 16:42:58
   line 49, col 5 to line 50, col 24 of module PerfectPointToPointLinks: 1
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2772:0 @!@!@
-<pl_send line 26, col 1 to line 26, col 16 of module PerfectPointToPointLinks>: 263393:2125764
+<pl_send line 26, col 1 to line 26, col 16 of module PerfectPointToPointLinks>: 262992:2125764
 @!@!@ENDMSG 2772 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
   line 27, col 8 to line 27, col 18 of module PerfectPointToPointLinks: 8503056
@@ -107,7 +107,7 @@ The coverage statistics at 2024-10-08 16:42:58
   line 33, col 12 to line 33, col 33 of module PerfectPointToPointLinks: 2125764
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2772:0 @!@!@
-<pl_deliver line 36, col 1 to line 36, col 19 of module PerfectPointToPointLinks>: 268047:2125764
+<pl_deliver line 36, col 1 to line 36, col 19 of module PerfectPointToPointLinks>: 268448:2125764
 @!@!@ENDMSG 2772 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
   line 37, col 8 to line 37, col 18 of module PerfectPointToPointLinks: 8503056
@@ -224,7 +224,7 @@ The coverage statistics at 2024-10-08 16:42:58
 End of statistics.
 @!@!@ENDMSG 2202 @!@!@
 @!@!@STARTMSG 2200:0 @!@!@
-Progress(25) at 2024-10-08 16:42:58: 4 251 529 states generated (7 168 720 s/min), 531 441 distinct states found (896 089 ds/min), 0 states left on queue.
+Progress(25) at 2024-10-10 14:19:40: 4 251 529 states generated (7 535 499 s/min), 531 441 distinct states found (941 937 ds/min), 0 states left on queue.
 @!@!@ENDMSG 2200 @!@!@
 @!@!@STARTMSG 2199:0 @!@!@
 4251529 states generated, 531441 distinct states found, 0 states left on queue.
@@ -236,5 +236,5 @@ The depth of the complete state graph search is 25.
 The average outdegree of the complete state graph is 1 (minimum is 0, the maximum 12 and the 95th percentile is 3).
 @!@!@ENDMSG 2268 @!@!@
 @!@!@STARTMSG 2186:0 @!@!@
-Finished in 35595ms at (2024-10-08 16:42:58)
+Finished in 33864ms at (2024-10-10 14:19:40)
 @!@!@ENDMSG 2186 @!@!@
