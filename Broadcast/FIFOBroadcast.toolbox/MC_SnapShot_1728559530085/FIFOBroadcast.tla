@@ -8,8 +8,7 @@
 EXTENDS 
     Naturals,
     FiniteSets,
-    Bags,
-    TLAPS
+    Bags
 
 CONSTANTS
     Procs,

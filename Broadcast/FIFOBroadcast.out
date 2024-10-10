@@ -2,44 +2,35 @@
 TLC2 Version 2.20 of Day Month 20?? (rev: 9fc0166)
 @!@!@ENDMSG 2262 @!@!@
 @!@!@STARTMSG 2187:0 @!@!@
-Running breadth-first search Model-Checking with fp 89 and seed -1489197985634267339 with 1 worker on 10 cores with 3641MB heap and 64MB offheap memory [pid: 14996] (Mac OS X 14.6.1 aarch64, Amazon.com Inc. 11.0.21 x86_64, MSBDiskFPSet, DiskStateQueue).
+Running breadth-first search Model-Checking with fp 128 and seed -3681173277872271483 with 1 worker on 10 cores with 3641MB heap and 64MB offheap memory [pid: 25916] (Mac OS X 14.6.1 aarch64, Amazon.com Inc. 11.0.21 x86_64, MSBDiskFPSet, DiskStateQueue).
 @!@!@ENDMSG 2187 @!@!@
 @!@!@STARTMSG 2220:0 @!@!@
 Starting SANY...
 @!@!@ENDMSG 2220 @!@!@
 Parsing file /Users/jonasspenger/work/dare-project-tlaplus/Broadcast/FIFOBroadcast.tla
-Parsing file /private/var/folders/tk/4dct8fcx1nqbzrrnljm9_8c80000gn/T/tlc-18174878156988899298/Naturals.tla (jar:file:/Users/jonasspenger/.vscode/extensions/tlaplus.vscode-ide-2024.10.81803/tools/tla2tools.jar!/tla2sany/StandardModules/Naturals.tla)
-Parsing file /private/var/folders/tk/4dct8fcx1nqbzrrnljm9_8c80000gn/T/tlc-18174878156988899298/FiniteSets.tla (jar:file:/Users/jonasspenger/.vscode/extensions/tlaplus.vscode-ide-2024.10.81803/tools/tla2tools.jar!/tla2sany/StandardModules/FiniteSets.tla)
-Parsing file /private/var/folders/tk/4dct8fcx1nqbzrrnljm9_8c80000gn/T/tlc-18174878156988899298/Bags.tla (jar:file:/Users/jonasspenger/.vscode/extensions/tlaplus.vscode-ide-2024.10.81803/tools/tla2tools.jar!/tla2sany/StandardModules/Bags.tla)
-Parsing file /private/var/folders/tk/4dct8fcx1nqbzrrnljm9_8c80000gn/T/tlc-18174878156988899298/TLC.tla (jar:file:/Users/jonasspenger/.vscode/extensions/tlaplus.vscode-ide-2024.10.81803/tools/tla2tools.jar!/tla2sany/StandardModules/TLC.tla)
-Parsing file /private/var/folders/tk/4dct8fcx1nqbzrrnljm9_8c80000gn/T/tlc-18174878156988899298/Sequences.tla (jar:file:/Users/jonasspenger/.vscode/extensions/tlaplus.vscode-ide-2024.10.81803/tools/tla2tools.jar!/tla2sany/StandardModules/Sequences.tla)
-Semantic processing of module Naturals
-Semantic processing of module Sequences
-Semantic processing of module FiniteSets
-Semantic processing of module TLC
-Semantic processing of module Bags
-Semantic processing of module FIFOBroadcast
+Parsing file /private/var/folders/tk/4dct8fcx1nqbzrrnljm9_8c80000gn/T/tlc-13050699652232979176/Naturals.tla (jar:file:/Users/jonasspenger/.vscode/extensions/tlaplus.vscode-ide-2024.10.81803/tools/tla2tools.jar!/tla2sany/StandardModules/Naturals.tla)
+Parsing file /private/var/folders/tk/4dct8fcx1nqbzrrnljm9_8c80000gn/T/tlc-13050699652232979176/FiniteSets.tla (jar:file:/Users/jonasspenger/.vscode/extensions/tlaplus.vscode-ide-2024.10.81803/tools/tla2tools.jar!/tla2sany/StandardModules/FiniteSets.tla)
+Parsing file /private/var/folders/tk/4dct8fcx1nqbzrrnljm9_8c80000gn/T/tlc-13050699652232979176/Bags.tla (jar:file:/Users/jonasspenger/.vscode/extensions/tlaplus.vscode-ide-2024.10.81803/tools/tla2tools.jar!/tla2sany/StandardModules/Bags.tla)
+
+Fatal errors while parsing TLA+ spec in file FIFOBroadcast
+
+tla2sany.semantic.AbortException
+*** Abort messages: 1
+
+Unknown location
+
+Cannot find source file for module TLAPS imported in module FIFOBroadcast.
+
+
 @!@!@STARTMSG 2219:0 @!@!@
 SANY finished.
 @!@!@ENDMSG 2219 @!@!@
 @!@!@STARTMSG 2185:0 @!@!@
-Starting... (2024-10-10 11:47:29)
+Starting... (2024-10-10 13:26:21)
 @!@!@ENDMSG 2185 @!@!@
-@!@!@STARTMSG 2212:0 @!@!@
-Implied-temporal checking--satisfiability problem has 1 branches.
-@!@!@ENDMSG 2212 @!@!@
-@!@!@STARTMSG 2189:0 @!@!@
-Computing initial states...
-@!@!@ENDMSG 2189 @!@!@
-@!@!@STARTMSG 2190:0 @!@!@
-Finished computing initial states: 1 distinct state generated at 2024-10-10 11:47:29.
-@!@!@ENDMSG 2190 @!@!@
-@!@!@STARTMSG 2192:0 @!@!@
-Checking temporal properties for the current state space with 7609 total distinct states at (2024-10-10 11:47:32)
-@!@!@ENDMSG 2192 @!@!@
-@!@!@STARTMSG 2267:0 @!@!@
-Finished checking temporal properties in 00s at 2024-10-10 11:47:32
-@!@!@ENDMSG 2267 @!@!@
-@!@!@STARTMSG 2200:0 @!@!@
-Progress(8) at 2024-10-10 11:47:32: 131 282 states generated (131 282 s/min), 7 609 distinct states found (7 609 ds/min), 3 937 states left on queue.
-@!@!@ENDMSG 2200 @!@!@
+@!@!@STARTMSG 3002:1 @!@!@
+Parsing or semantic analysis failed.
+@!@!@ENDMSG 3002 @!@!@
+@!@!@STARTMSG 2186:0 @!@!@
+Finished in 209ms at (2024-10-10 13:26:21)
+@!@!@ENDMSG 2186 @!@!@
