@@ -2,15 +2,15 @@
 EXTENDS PerfectPointToPointLinks, TLC
 
 \* CONSTANT definitions @modelParameterConstants:0Procs
-const_1728564229144146000 == 
+const_17285648697188000 == 
 {1, 2}
 ----
 
 \* CONSTANT definitions @modelParameterConstants:1Messages
-const_1728564229144147000 == 
+const_17285648697189000 == 
 {1, 2, 3}
 ----
 
 =============================================================================
 \* Modification History
-\* Created Thu Oct 10 14:43:49 CEST 2024 by jonasspenger
+\* Created Thu Oct 10 14:54:29 CEST 2024 by jonasspenger

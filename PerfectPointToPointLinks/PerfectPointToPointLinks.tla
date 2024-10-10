@@ -195,13 +195,10 @@ PROOF
     PROOF OBVIOUS
 <1>2 TAKE p \in Procs, q \in Procs, m \in Messages
 <1>3 DEFINE rm == [sdr |-> p, rcv |-> q, msg |-> m]
-
 <1>4 \A A : [](A \/ ~A)
     PROOF OBVIOUS
-
 <1>5 [](enabled_pl_deliver(p, q, m) \/ ~enabled_pl_deliver(p, q, m))
     PROOF BY <1>4, PTL
- 
 <1>6 rm \in pl_sent => [](enabled_pl_deliver(p, q, m) \/ ~enabled_pl_deliver(p, q, m))
     PROOF BY <1>5
 
@@ -212,42 +209,32 @@ PROOF
 
 <1>8 \A A : ~[]A => <>(~A)
     PROOF OBVIOUS
-
 <1>9 rm \in pl_sent => <>~enabled_pl_deliver(p, q, m)
     PROOF BY <1>6, <1>7, <1>8, PTL
-
 <1>10 /\ ~enabled_pl_deliver(p, q, m) 
      /\ p \in Procs 
      /\ q \in Procs 
      /\ rm \in pl_sent =>
           rm \in pl_delivered
     PROOF BY DEF enabled_pl_deliver
-
 <1>11 (~enabled_pl_deliver(p, q, m) /\ rm \in pl_sent) => rm \in pl_delivered
     BY <1>10
-
 <1>12 rm \in pl_sent => []( rm \in pl_sent )
     PROOF OMITTED \* Should be easy to prove as a stable property 
-
 <1>13 \A A, B : (A => B) => (<>(A) => <>(B))
     PROOF OBVIOUS
-    
 <1>14 <>( ~enabled_pl_deliver(p, q, m) /\ rm \in pl_sent ) => <>( rm \in pl_delivered )
     PROOF OMITTED \* Should be obvious from <1>11 and <1>13
-    
 <1>15 <>( ~enabled_pl_deliver(p, q, m) ) /\ []( rm \in pl_sent ) =>
         <>( ~enabled_pl_deliver(p, q, m) /\ rm \in pl_sent )
     BY PTL
-
 <1>16 (rm \in pl_sent) => (
     ([]( rm \in pl_sent )) => 
         (<>( ~enabled_pl_deliver(p, q, m) ) => <>( rm \in pl_delivered ))
     )
     BY <1>15, <1>14
-
 <1>17 (rm \in pl_sent) => <>( rm \in pl_delivered )
     BY <1>12, <1>9, <1>16
-
 <1>18 QED
     BY <1>17
 

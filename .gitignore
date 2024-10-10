@@ -14,6 +14,12 @@
 **/*~
 cluster/isabelle/output
 
+# Tex
+*.aux
+*.log
+*.out
+*.tex
+
 # TLAPS
 fingerprints.history
 *.thy

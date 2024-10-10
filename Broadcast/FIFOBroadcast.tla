@@ -85,7 +85,7 @@ PL_Init ==
 
 ----------------------------------------------------------------------------
 
-\* Back to the best-effort broadcast module
+\* Back to the FIFO broadcast module
 
 
 \* The spec consists of the following variables. The variables are not used 
@@ -258,5 +258,5 @@ PROOF
 
 =============================================================================
 \* Modification History
-\* Last modified Thu Oct 10 13:23:29 CEST 2024 by jonasspenger
+\* Last modified Thu Oct 10 14:59:12 CEST 2024 by jonasspenger
 \* Created Wed Oct 09 12:56:24 CEST 2024 by jonasspenger

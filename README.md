@@ -6,6 +6,9 @@ The models should be available once loaded.
 To trigger TLAPS to check the proofs, use the keyboard command `COMMAND-G-G`.
 Using TLAPS may require some further installation.
 
+## Screenshots
+Instead of running the models and proof checkers, we have included screenshots and PDFs of the models and proofs in the `screenshots` directory.
+
 ## Project scope
 
 The project consists of three parts.
